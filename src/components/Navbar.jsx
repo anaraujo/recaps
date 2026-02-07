@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import logo from "assets/channels4_profile.jpg";
 
 const links = [
   { to: "/", label: "Principal" },
@@ -8,8 +9,9 @@ const links = [
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 w-full z-50 flex items-center justify-between px-8 py-4 bg-black/60 backdrop-blur-sm text-white">
-      <NavLink to="/" className="text-xl font-bold tracking-widest uppercase">
+    <nav className="sticky top-0 w-full z-50 flex items-center justify-between px-8 py-4 bg-brand-orange backdrop-blur-sm text-brand-white">
+      <NavLink to="/" className="flex items-center gap-2 text-xl font-bold tracking-widest uppercase">
+        <img src={logo} alt="Recaps" className="h-8 w-auto" />
         Recaps
       </NavLink>
       <ul className="flex gap-6 text-sm uppercase tracking-wider">
@@ -26,7 +28,7 @@ export default function Navbar() {
           </li>
         ))}
         <li>
-          <a href="#" target="_blank" rel="noopener noreferrer" className="hover:opacity-70">
+          <a href="https://recaps.net.br" target="_blank" rel="noopener noreferrer" className="hover:opacity-70">
             Loja
           </a>
         </li>
