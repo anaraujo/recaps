@@ -9,14 +9,14 @@ const links = [
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 w-full z-50 flex items-center justify-between px-8 py-4 bg-brand-orange backdrop-blur-sm text-brand-white">
-      <NavLink to="/" className="flex items-center gap-2 text-xl font-bold tracking-widest uppercase">
+    <nav className="sticky top-0 w-full z-50 flex items-center justify-between px-8 py-4 bg-brand-orange text-brand-white">
+      <NavLink to="/" className="flex items-center gap-2 text-xl font-bold tracking-widest uppercase ">
         <img src={logo} alt="Recaps" className="h-8 w-auto" />
         Recaps
       </NavLink>
       <ul className="flex gap-6 text-sm uppercase tracking-wider">
         {links.map(({ to, label }) => (
-          <li key={to}>
+          <li key={to} className="hover:text-brand-black">
             <NavLink
               to={to}
               className={({ isActive }) =>
@@ -27,7 +27,7 @@ export default function Navbar() {
             </NavLink>
           </li>
         ))}
-        <li>
+        <li className="font-semibold text-brand-black hover:text-brand-white">
           <a href="https://recaps.net.br" target="_blank" rel="noopener noreferrer" className="hover:opacity-70">
             Loja
           </a>

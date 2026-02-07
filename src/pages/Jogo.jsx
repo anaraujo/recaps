@@ -1,7 +1,7 @@
 export default function Jogo() {
   return (
-    <main className="min-h-screen bg-brand-black text-brand-white flex items-center justify-center">
-      <p className="text-2xl uppercase tracking-widest opacity-50">Em breve</p>
+    <main className="flex-1 bg-brand-black text-brand-white flex items-center justify-center">
+      <h1 className="relative z-10 text-5xl font-bold tracking-widest uppercase">Em breve</h1>
     </main>
   );
 }
