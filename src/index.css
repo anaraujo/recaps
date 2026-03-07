@@ -1,7 +1,37 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-brand-black: #000000;
-  --color-brand-white: #FFFFFF;
-  --color-brand-orange: #F45203;
+  --color-brand-white: #ffffff;
+  --color-brand-orange: #f45203;
+}
+
+.shine-card {
+  position: relative;
+}
+
+.shine-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 0 0 4px 1.5px hsl(0 0% 100% / 0.8) inset;
+  mask: linear-gradient(
+    calc(var(--pointer-angle, 135) * 1deg),
+    hsl(0 0% 100% / 0.5),
+    hsl(0 0% 100% / 0.19) 30% 60%,
+    hsl(0 0% 100% / 1)
+  );
+}
+
+@supports (corner-shape: squircle) {
+  .shine-card {
+    border-radius: 50%;
+    corner-shape: squircle;
+  }
+  .shine-card > img {
+    border-radius: 50%;
+    corner-shape: squircle;
+  }
 }
