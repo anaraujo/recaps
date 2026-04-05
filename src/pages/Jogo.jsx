@@ -4,13 +4,13 @@ export default function Jogo() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <main className="bg-brand-black flex flex-1 flex-col items-center justify-center">
+    <main className="flex flex-1 flex-col items-center justify-center">
       <div
-        className="border-brand-orange relative w-full overflow-hidden rounded-lg border-2"
+        className="border-brand-orange relative overflow-hidden rounded-lg border-2"
         style={{ aspectRatio: '864 / 936' }}
       >
         {isLoading && (
-          <div className="bg-brand-black absolute inset-0 z-10 flex items-center justify-center">
+          <div className="absolute inset-0 z-10 flex items-center justify-center">
             <p className="text-brand-white animate-pulse text-lg tracking-widest uppercase">
               Carregando...
             </p>

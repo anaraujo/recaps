@@ -35,7 +35,7 @@ const novidades = [
 
 export default function Novidades() {
   return (
-    <main className="bg-brand-black text-brand-white min-h-screen px-8">
+    <main className="min-h-screen px-8">
       <h1 className="relative my-8 text-center text-5xl font-bold tracking-widest uppercase">
         Novidades
       </h1>

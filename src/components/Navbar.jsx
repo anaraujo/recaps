@@ -10,7 +10,7 @@ const links = [
 
 export default function Navbar() {
   return (
-    <nav className="bg-brand-orange text-brand-white sticky top-0 z-50 flex w-full items-center justify-between px-8 py-4">
+    <nav className="text-brand-white bg-brand-orange border-brand-white sticky top-0 z-50 flex w-full items-center justify-between border-b border-solid px-8 py-4">
       <NavLink
         to="/"
         className="flex items-center gap-2 text-xl font-bold tracking-widest uppercase"

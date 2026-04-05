@@ -1,9 +1,17 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-brand-black: #000000;
-  --color-brand-white: #ffffff;
+  --color-brand-black: #151515;
+  --color-brand-white: #f0efea;
   --color-brand-orange: #f45203;
+}
+
+.bg-brand-gradient {
+  background: linear-gradient(to left, #151515, #f45203);
+}
+
+.bg-inverted-gradient {
+  background: linear-gradient(to right, #151515, #f45203);
 }
 
 .shine-card {
