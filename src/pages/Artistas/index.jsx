@@ -4,6 +4,7 @@ import fortes from 'assets/artistas/fortes.png';
 import fortes2 from 'assets/artistas/fortes-2.png';
 import bin from 'assets/artistas/bin.png';
 import bin2 from 'assets/artistas/bin-2.png';
+import RollingText from 'components/RollingText';
 import Artista from './Artista';
 
 const artistas = [
@@ -36,9 +37,7 @@ const artistas = [
 export default function Artistas() {
   return (
     <main className="min-h-screen px-8">
-      <h1 className="relative my-8 text-center text-5xl font-bold tracking-widest uppercase">
-        Artistas
-      </h1>
+      <RollingText text="Artistas" />
       <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
         {artistas.map(({ name, image }, i) => (
           <Artista key={i} name={name} image={image} />
