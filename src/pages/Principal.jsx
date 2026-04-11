@@ -20,13 +20,16 @@ export default function Principal() {
       className="relative flex flex-1 items-center justify-center"
     >
       <Background />
-      <img
-        src={comeCloser}
-        alt="Come closer"
-        className="absolute z-10 max-h-64 max-w-64"
-      />
-      <div ref={ref} className="shine-card relative z-20 rounded-lg px-8 py-4">
-        <h1 className="text-5xl font-bold tracking-widest uppercase">Recaps</h1>
+
+      <div ref={ref} className="shine-card relative rounded-lg px-12 py-8">
+        <img
+          src={comeCloser}
+          alt="Come closer"
+          className="absolute inset-0 z-10 m-auto max-h-64 max-w-64"
+        />
+        <h1 className="relative z-20 text-5xl font-bold tracking-widest uppercase">
+          Recaps
+        </h1>
       </div>
     </section>
   );
