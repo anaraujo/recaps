@@ -4,6 +4,7 @@ import fortes from 'assets/artistas/fortes.png';
 import fortes2 from 'assets/artistas/fortes-2.png';
 import bin from 'assets/artistas/bin.png';
 import bin2 from 'assets/artistas/bin-2.png';
+import ScrambleText from 'components/ScrambleText';
 import Novidade from './Novidade';
 
 const novidades = [
@@ -36,9 +37,10 @@ const novidades = [
 export default function Novidades() {
   return (
     <main className="min-h-screen px-8">
-      <h1 className="relative my-8 text-center text-5xl font-bold tracking-widest uppercase">
+      <ScrambleText text="Novidades" />
+      {/* <h1 className="relative my-8 text-center text-5xl font-bold tracking-widest uppercase">
         Novidades
-      </h1>
+      </h1> */}
       <div className="grid grid-cols-2 gap-20 md:grid-cols-3 lg:grid-cols-4">
         {novidades.map(({ name, image }, i) => (
           <Novidade key={i} name={name} image={image} />
