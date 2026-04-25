@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from 'components/Navbar';
-import Principal from 'pages/Principal';
-import Artistas from 'pages/Artistas';
-import Novidades from 'pages/Novidades';
-import Jogo from 'pages/Jogo';
+import Home from 'pages/Home';
+import Artists from 'pages/Artists';
+import News from 'pages/News';
+import Game from 'pages/Game';
 import Footer from 'components/Footer';
 
 export default function App() {
@@ -12,10 +12,10 @@ export default function App() {
       <Navbar />
       <main className="flex flex-1 flex-col">
         <Routes>
-          <Route path="/" element={<Principal />} />
-          <Route path="/artistas" element={<Artistas />} />
-          <Route path="/novidades" element={<Novidades />} />
-          <Route path="/jogo" element={<Jogo />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/artists" element={<Artists />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/game" element={<Game />} />
         </Routes>
       </main>
       <Footer />

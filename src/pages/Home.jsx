@@ -8,7 +8,7 @@ import Voronoi from 'components/backgrounds/Voronoi';
 
 const backgrounds = [MetaBalls, FutureSplash, Smoothing, Voronoi];
 
-export default function Principal() {
+export default function Home() {
   const { ref, onPointerMove } = useShineEffect();
   const [Background] = useState(
     () => backgrounds[Math.floor(Math.random() * backgrounds.length)],

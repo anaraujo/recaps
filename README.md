@@ -4,10 +4,10 @@ A React single-page app for the Recaps brand, with animated backgrounds, text ef
 
 ## Pages
 
-- **Principal** (`/`) — landing page with a randomized animated background (MetaBalls, FutureSplash, Smoothing, or Voronoi) and a shine-effect card.
-- **Artistas** (`/artistas`) — artist directory with a rolling 3D heading animation.
-- **Novidades** (`/novidades`) — news/updates feed with a scramble-text heading.
-- **Jogo** (`/jogo`) — game page.
+- **Home** (`/`) — landing page with a randomized animated background (MetaBalls, FutureSplash, Smoothing, or Voronoi) and a shine-effect card.
+- **Artists** (`/artists`) — artist directory with a rolling 3D heading animation.
+- **News** (`/news`) — news feed with a scramble-text heading.
+- **Game** (`/game`) — game page.
 
 ## Stack
 
@@ -43,10 +43,10 @@ src/
 ├── hooks/
 │   └── useShineEffect.js  # pointer-tracked shine highlight
 └── pages/
-    ├── Principal.jsx
-    ├── Artistas/
-    ├── Novidades/
-    └── Jogo.jsx
+    ├── Home.jsx
+    ├── Artists/
+    ├── News/
+    └── Game.jsx
 ```
 
 Path aliases (`assets`, `components`, `hooks`, `pages`) are configured in [vite.config.js](vite.config.js).

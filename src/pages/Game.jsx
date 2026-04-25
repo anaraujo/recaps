@@ -5,7 +5,7 @@ import RoundedRectanglesLoader from 'components/RoundedRectanglesLoader';
 
 const loaders = [ChainLoader, CandyCrashLoader, RoundedRectanglesLoader];
 
-export default function Jogo() {
+export default function Game() {
   const [isLoading, setIsLoading] = useState(true);
   const [Loader] = useState(
     () => loaders[Math.floor(Math.random() * loaders.length)],

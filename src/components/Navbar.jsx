@@ -2,10 +2,10 @@ import { NavLink } from 'react-router-dom';
 import logo from 'assets/channels4_profile.jpg';
 
 const links = [
-  { to: '/', label: 'Principal' },
-  { to: '/artistas', label: 'Artistas' },
-  { to: '/novidades', label: 'Novidades' },
-  { to: '/jogo', label: 'Jogo' },
+  { to: '/', label: 'Home' },
+  { to: '/artists', label: 'Artists' },
+  { to: '/news', label: 'News' },
+  { to: '/game', label: 'Game' },
 ];
 
 export default function Navbar() {
@@ -38,7 +38,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="hover:opacity-70"
           >
-            Loja
+            Shop
           </a>
         </li>
       </ul>

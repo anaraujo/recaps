@@ -1,13 +1,13 @@
-import vero2 from 'assets/artistas/vero-2.png';
-import vero from 'assets/artistas/vero.png';
-import fortes from 'assets/artistas/fortes.png';
-import fortes2 from 'assets/artistas/fortes-2.png';
-import bin from 'assets/artistas/bin.png';
-import bin2 from 'assets/artistas/bin-2.png';
+import vero2 from 'assets/artists/vero-2.png';
+import vero from 'assets/artists/vero.png';
+import fortes from 'assets/artists/fortes.png';
+import fortes2 from 'assets/artists/fortes-2.png';
+import bin from 'assets/artists/bin.png';
+import bin2 from 'assets/artists/bin-2.png';
 import ScrambleText from 'components/ScrambleText';
-import Novidade from './Novidade';
+import NewsItem from './NewsItem';
 
-const novidades = [
+const news = [
   {
     name: 'VERO',
     image: vero,
@@ -34,16 +34,16 @@ const novidades = [
   },
 ];
 
-export default function Novidades() {
+export default function News() {
   return (
     <main className="min-h-screen px-8">
-      <ScrambleText text="Novidades" />
+      <ScrambleText text="News" />
       {/* <h1 className="relative my-8 text-center text-5xl font-bold tracking-widest uppercase">
-        Novidades
+        News
       </h1> */}
       <div className="grid grid-cols-2 gap-20 md:grid-cols-3 lg:grid-cols-4">
-        {novidades.map(({ name, image }, i) => (
-          <Novidade key={i} name={name} image={image} />
+        {news.map(({ name, image }, i) => (
+          <NewsItem key={i} name={name} image={image} />
         ))}
       </div>
     </main>

@@ -1,6 +1,6 @@
 import useShineEffect from 'hooks/useShineEffect';
 
-export default function Novidade({ name, image }) {
+export default function NewsItem({ name, image }) {
   const { ref, onPointerMove } = useShineEffect();
 
   return (

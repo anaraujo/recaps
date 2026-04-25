@@ -1,4 +1,4 @@
-export default function Artista({ name, image }) {
+export default function Artist({ name, image }) {
   return (
     <div className="from-brand-orange hover:to-brand-orange aspect-square cursor-pointer rounded-lg bg-linear-to-t from-25% to-transparent to-25%">
       <img
