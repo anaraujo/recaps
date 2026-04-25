@@ -55,7 +55,7 @@ export default function useYouTubePlayer({ playlistId }) {
             if (cancelled) return;
             errorCountRef.current += 1;
             if (errorCountRef.current >= MAX_CONSECUTIVE_ERRORS) {
-              setError('playback unavailable');
+              setError('indisponível');
               return;
             }
             playerRef.current?.nextVideo();

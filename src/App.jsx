@@ -5,7 +5,6 @@ import Artists from 'pages/Artists';
 import News from 'pages/News';
 import Game from 'pages/Game';
 import Footer from 'components/Footer';
-import RadioPlayer from 'components/RadioPlayer';
 
 export default function App() {
   return (
@@ -19,7 +18,6 @@ export default function App() {
           <Route path="/game" element={<Game />} />
         </Routes>
       </main>
-      <RadioPlayer />
       <Footer />
     </div>
   );
