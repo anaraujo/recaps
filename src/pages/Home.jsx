@@ -21,7 +21,7 @@ export default function Home() {
     >
       <Background />
 
-      <div ref={ref} className="shine-card relative rounded-lg px-12 py-8">
+      <div ref={ref} className="shine-card relative rounded-[100%] px-12 py-8">
         <img
           src={comeCloser}
           alt="Come closer"

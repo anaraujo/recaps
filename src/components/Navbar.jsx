@@ -3,9 +3,9 @@ import logo from 'assets/channels4_profile.jpg';
 
 const links = [
   { to: '/', label: 'Home' },
-  { to: '/artists', label: 'Artists' },
-  { to: '/news', label: 'News' },
-  { to: '/game', label: 'Game' },
+  { to: '/artists', label: 'Artistas' },
+  { to: '/news', label: 'Novidades' },
+  { to: '/game', label: 'Jogo' },
 ];
 
 export default function Navbar() {

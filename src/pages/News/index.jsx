@@ -37,7 +37,7 @@ const news = [
 export default function News() {
   return (
     <main className="min-h-screen px-8">
-      <ScrambleText text="News" />
+      <ScrambleText text="Novidades" />
       {/* <h1 className="relative my-8 text-center text-5xl font-bold tracking-widest uppercase">
         News
       </h1> */}

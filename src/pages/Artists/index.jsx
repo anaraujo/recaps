@@ -37,7 +37,7 @@ const artists = [
 export default function Artists() {
   return (
     <main className="min-h-screen px-8">
-      <RollingText text="Artists" />
+      <RollingText text="Artistas" />
       <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
         {artists.map(({ name, image }, i) => (
           <Artist key={i} name={name} image={image} />
