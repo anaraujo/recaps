@@ -7,6 +7,7 @@ gsap.registerPlugin(SplitText);
 export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
   const containerRef = useRef(null);
   const lineRefs = useRef([]);
+  const tlRef = useRef(null);
 
   useEffect(() => {
     gsap.set(containerRef.current, { visibility: 'visible' });
@@ -32,28 +33,36 @@ export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
     });
 
     const animTime = 0.9;
-    const tl = gsap.timeline({ repeat: -1 });
+    const tl = gsap.timeline();
 
     splitLines.forEach((split, index) => {
+      const isLast = index === splitLines.length - 1;
       tl.fromTo(
         split.chars,
         { rotationX: -90 },
         {
-          rotationX: 90,
+          rotationX: isLast ? 0 : 90,
           stagger: 0.08,
           duration: animTime,
-          ease: 'none',
+          ease: isLast ? 'power2.out' : 'none',
           transformOrigin,
         },
         index * 0.45,
       );
     });
 
+    tlRef.current = tl;
+
     return () => {
       tl.kill();
+      tlRef.current = null;
       splitLines.forEach((split) => split.revert());
     };
   }, [text, lines, fontSize]);
+
+  const handleMouseEnter = () => {
+    tlRef.current?.restart();
+  };
 
   return (
     <div
@@ -61,7 +70,10 @@ export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
       className="invisible flex w-full items-center justify-center"
       style={{ '--rolling-text-font-size': fontSize }}
     >
-      <div className="relative my-8 h-[calc(var(--rolling-text-font-size)*1.333)] w-full text-center text-5xl font-bold tracking-widest uppercase">
+      <div
+        onMouseEnter={handleMouseEnter}
+        className="relative my-8 h-[calc(var(--rolling-text-font-size)*1.333)] w-full text-center text-5xl font-bold tracking-widest uppercase"
+      >
         {Array.from({ length: lines }).map((_, i) => (
           <h1
             key={i}
