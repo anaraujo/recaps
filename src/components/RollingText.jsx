@@ -94,13 +94,13 @@ export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
     >
       <div
         onMouseEnter={handleMouseEnter}
-        className="relative my-8 h-[calc(var(--rolling-text-font-size)*1.333)] w-full text-center text-5xl font-bold tracking-widest uppercase"
+        className="my-8 grid font-bold uppercase"
       >
         {Array.from({ length: lines }).map((_, i) => (
           <h1
             key={i}
             ref={(el) => (lineRefs.current[i] = el)}
-            className="absolute top-1/2 left-1/2 m-0 -translate-x-1/2 -translate-y-1/2 text-center text-(length:--rolling-text-font-size) leading-none tracking-[calc(var(--rolling-text-font-size)*-0.033)] whitespace-nowrap [&_div]:backface-hidden"
+            className="col-start-1 row-start-1 m-0 text-(length:--rolling-text-font-size) leading-none tracking-[calc(var(--rolling-text-font-size)*-0.033)] whitespace-nowrap [&_div]:backface-hidden"
           >
             {text}
           </h1>
