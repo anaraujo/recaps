@@ -7,7 +7,7 @@ gsap.registerPlugin(SplitText);
 export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
   const containerRef = useRef(null);
   const lineRefs = useRef([]);
-  const tlRef = useRef(null);
+  const playRef = useRef(() => {});
 
   useEffect(() => {
     gsap.set(containerRef.current, { visibility: 'visible' });
@@ -33,35 +33,60 @@ export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
     });
 
     const animTime = 0.9;
-    const tl = gsap.timeline();
+    let currentTl = null;
 
-    splitLines.forEach((split, index) => {
-      const isLast = index === splitLines.length - 1;
-      tl.fromTo(
-        split.chars,
-        { rotationX: -90 },
-        {
-          rotationX: isLast ? 0 : 90,
-          stagger: 0.08,
-          duration: animTime,
-          ease: isLast ? 'power2.out' : 'none',
-          transformOrigin,
-        },
-        index * 0.45,
-      );
-    });
+    const play = ({ withRollOut }) => {
+      currentTl?.kill();
+      const tl = gsap.timeline();
 
-    tlRef.current = tl;
+      if (withRollOut) {
+        // Roll the currently-visible last line out so the cascade starts from the visible state instead of snapping to empty.
+        const last = splitLines[splitLines.length - 1];
+        tl.fromTo(
+          last.chars,
+          { rotationX: 0 },
+          {
+            rotationX: 90,
+            stagger: 0.08,
+            duration: animTime,
+            ease: 'none',
+            transformOrigin,
+          },
+          0,
+        );
+      }
+
+      splitLines.forEach((split, index) => {
+        const isLast = index === splitLines.length - 1;
+        tl.fromTo(
+          split.chars,
+          { rotationX: -90 },
+          {
+            rotationX: isLast ? 0 : 90,
+            stagger: 0.08,
+            duration: animTime,
+            ease: isLast ? 'power2.out' : 'none',
+            transformOrigin,
+          },
+          index * 0.45,
+        );
+      });
+
+      currentTl = tl;
+    };
+
+    playRef.current = play;
+    play({ withRollOut: false });
 
     return () => {
-      tl.kill();
-      tlRef.current = null;
+      currentTl?.kill();
+      playRef.current = () => {};
       splitLines.forEach((split) => split.revert());
     };
   }, [text, lines, fontSize]);
 
   const handleMouseEnter = () => {
-    tlRef.current?.restart();
+    playRef.current({ withRollOut: true });
   };
 
   return (
