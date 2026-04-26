@@ -21,7 +21,7 @@ export default function Footer() {
   } = useYouTubePlayer({ playlistId: PLAYLIST_ID });
 
   const buttonClass =
-    'hover:text-brand-orange disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-brand-orange';
+    'cursor-pointer hover:text-brand-orange disabled:cursor-default disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-brand-orange';
 
   return (
     <>
