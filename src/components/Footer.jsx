@@ -1,10 +1,10 @@
-import useYouTubePlayer from 'hooks/useYouTubePlayer';
 import {
-  NextIcon,
-  PauseIcon,
-  PlayIcon,
-  PrevIcon,
-} from 'components/icons/PlayerIcons';
+  Pause,
+  Play,
+  SkipBack,
+  SkipForward,
+} from '@phosphor-icons/react';
+import useYouTubePlayer from 'hooks/useYouTubePlayer';
 
 const PLAYLIST_ID = 'PL6_t3YDqAyeMDcWXv06N-rwj4MoeU-pii';
 
@@ -21,7 +21,7 @@ export default function Footer() {
   } = useYouTubePlayer({ playlistId: PLAYLIST_ID });
 
   const buttonClass =
-    'h-6 w-6 hover:text-brand-orange disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-brand-orange';
+    'hover:text-brand-orange disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-brand-orange';
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function Footer() {
         <div ref={containerRef} title="Player de rádio do YouTube" />
       </div>
 
-      <footer className="bg-brand-black border-brand-orange/40 text-brand-white flex h-8 items-center gap-3 border-t px-4 text-xs">
+      <footer className="bg-brand-black border-brand-orange/40 text-brand-white sticky bottom-0 z-50 flex h-8 items-center gap-3 border-t px-4 text-xs">
         <button
           type="button"
           onClick={prev}
@@ -40,7 +40,7 @@ export default function Footer() {
           aria-label="Faixa anterior"
           className={buttonClass}
         >
-          <PrevIcon className="h-full w-full" />
+          <SkipBack size={18} weight="fill" />
         </button>
         <button
           type="button"
@@ -50,9 +50,9 @@ export default function Footer() {
           className={buttonClass}
         >
           {isPlaying ? (
-            <PauseIcon className="h-full w-full" />
+            <Pause size={18} weight="fill" />
           ) : (
-            <PlayIcon className="h-full w-full" />
+            <Play size={18} weight="fill" />
           )}
         </button>
         <button
@@ -62,7 +62,7 @@ export default function Footer() {
           aria-label="Próxima faixa"
           className={buttonClass}
         >
-          <NextIcon className="h-full w-full" />
+          <SkipForward size={18} weight="fill" />
         </button>
 
         <div
