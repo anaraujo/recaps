@@ -10,37 +10,62 @@ import Artist from './Artist';
 const artists = [
   {
     name: 'VERO',
+    instagram: 'https://www.instagram.com/jazzdavero/',
+    spotify: 'https://open.spotify.com/intl-pt/artist/4jGsOURk2Pxk4BtofViTGj',
+    youtubeMusic: 'https://music.youtube.com/channel/UCqRu52tp2TL4niMbaT9H9Fg',
     image: vero,
   },
   {
     name: 'VERO',
+    instagram: 'https://www.instagram.com/jazzdavero/',
+    spotify: 'https://open.spotify.com/intl-pt/artist/4jGsOURk2Pxk4BtofViTGj',
+    youtubeMusic: 'https://music.youtube.com/channel/UCqRu52tp2TL4niMbaT9H9Fg',
     image: vero2,
   },
   {
     name: 'kyle fortes',
+    instagram: 'https://www.instagram.com/fxrtess/',
+    spotify: 'https://open.spotify.com/intl-pt/artist/6dNbjGxPkhGLjBNNJLlulK',
+    youtubeMusic: 'https://music.youtube.com/channel/UCaeJuJw3vluw9HJUDOtIF8A',
     image: fortes,
   },
   {
     name: 'kyle fortes',
+    instagram: 'https://www.instagram.com/fxrtess/',
+    spotify: 'https://open.spotify.com/intl-pt/artist/6dNbjGxPkhGLjBNNJLlulK',
+    youtubeMusic: 'https://music.youtube.com/channel/UCaeJuJw3vluw9HJUDOtIF8A',
     image: fortes2,
   },
   {
     name: 'lucasbin',
+    instagram: 'https://www.instagram.com/lucasbin__/',
+    spotify: 'https://open.spotify.com/intl-pt/artist/7KYrffinPH0x6rrRIqIBid',
+    youtubeMusic: 'https://music.youtube.com/channel/UCxHike0Q4ka062MMHia6M2Q',
     image: bin,
   },
   {
     name: 'lucasbin',
+    instagram: 'https://www.instagram.com/lucasbin__/',
+    spotify: 'https://open.spotify.com/intl-pt/artist/7KYrffinPH0x6rrRIqIBid',
+    youtubeMusic: 'https://music.youtube.com/channel/UCxHike0Q4ka062MMHia6M2Q',
     image: bin2,
   },
 ];
 
 export default function Artists() {
   return (
-    <main className="min-h-screen px-8">
+    <main className="min-h-screen p-8">
       <RollingText text="Artistas" />
       <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
-        {artists.map(({ name, image }, i) => (
-          <Artist key={i} name={name} image={image} />
+        {artists.map(({ name, image, instagram, spotify, youtubeMusic }, i) => (
+          <Artist
+            key={i}
+            name={name}
+            image={image}
+            instagram={instagram}
+            spotify={spotify}
+            youtubeMusic={youtubeMusic}
+          />
         ))}
       </div>
     </main>
