@@ -7,7 +7,7 @@ export default function useYouTubePlayer({ playlistId }) {
   const containerRef = useRef(null);
   const playerRef = useRef(null);
   const errorCountRef = useRef(0);
-  const lastTitleRef = useRef('');
+  const lastTrackKeyRef = useRef('');
 
   const [isReady, setIsReady] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -16,6 +16,50 @@ export default function useYouTubePlayer({ playlistId }) {
 
   useEffect(() => {
     let cancelled = false;
+
+    // YT auto-generates "<Artist> - Topic" channels for music uploads;
+    // strip the suffix so we display just the artist name.
+    const cleanAuthor = (author) =>
+      (author || '').replace(/\s*-\s*Topic$/i, '');
+
+    const updateTrack = (data) => {
+      if (!data?.title) return false;
+      const author = cleanAuthor(data.author);
+      const key = `${data.video_id || ''}|${author}`;
+      if (key === lastTrackKeyRef.current) return false;
+      lastTrackKeyRef.current = key;
+      setCurrentTrack({ title: data.title, author });
+      errorCountRef.current = 0;
+      setError(null);
+      return true;
+    };
+
+    // YT's getVideoData() leaves `author` empty for cued-but-untouched videos.
+    // oEmbed gives us the channel name without needing an API key.
+    const backfillAuthor = async (videoId, title) => {
+      try {
+        const watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+        const oembedUrl = `https://www.youtube.com/oembed?url=${encodeURIComponent(watchUrl)}&format=json`;
+        const res = await fetch(oembedUrl);
+        if (!res.ok) return;
+        const json = await res.json();
+        const author = cleanAuthor(json.author_name);
+        if (cancelled || !author) return;
+        // bail if the track changed while we were fetching
+        if (!lastTrackKeyRef.current.startsWith(`${videoId}|`)) return;
+        lastTrackKeyRef.current = `${videoId}|${author}`;
+        setCurrentTrack({ title, author });
+      } catch {
+        /* network/CORS issue — title alone is fine */
+      }
+    };
+
+    const handleData = (data) => {
+      if (!updateTrack(data)) return;
+      if (!data.author && data.video_id) {
+        backfillAuthor(data.video_id, data.title);
+      }
+    };
 
     loadYouTubeAPI().then((YT) => {
       if (cancelled || !containerRef.current) return;
@@ -35,21 +79,21 @@ export default function useYouTubePlayer({ playlistId }) {
           rel: 0,
         },
         events: {
-          onReady: () => {
+          onReady: (event) => {
             if (cancelled) return;
             setIsReady(true);
+            event.target.setShuffle(true);
+            // advance to the new shuffled first track; autoplay is blocked
+            // without a gesture, but the player still loads the video and
+            // onStateChange will fire with the fresh metadata. We skip
+            // reading getVideoData here so the originally-cued track
+            // doesn't flash before the shuffled one resolves.
+            event.target.playVideoAt(0);
           },
           onStateChange: (event) => {
             if (cancelled) return;
             setIsPlaying(event.data === window.YT.PlayerState.PLAYING);
-
-            const data = event.target.getVideoData?.();
-            if (data?.title && data.title !== lastTitleRef.current) {
-              lastTitleRef.current = data.title;
-              setCurrentTrack({ title: data.title, author: data.author });
-              errorCountRef.current = 0;
-              setError(null);
-            }
+            handleData(event.target.getVideoData?.());
           },
           onError: () => {
             if (cancelled) return;

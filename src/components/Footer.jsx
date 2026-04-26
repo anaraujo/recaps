@@ -80,7 +80,7 @@ export default function Footer() {
             </>
           ) : (
             <span className="opacity-50">
-              RÁDIO — {isReady ? 'aperte play' : 'conectando...'}
+              RÁDIO — {isReady ? 'sintonizando...' : 'conectando...'}
             </span>
           )}
         </div>
