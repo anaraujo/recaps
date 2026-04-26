@@ -4,7 +4,7 @@ import fortes from 'assets/artists/fortes.png';
 import fortes2 from 'assets/artists/fortes-2.png';
 import bin from 'assets/artists/bin.png';
 import bin2 from 'assets/artists/bin-2.png';
-import ScrambleText from 'components/ScrambleText';
+import RollingText from 'components/RollingText';
 import NewsItem from './NewsItem';
 
 const news = [
@@ -37,7 +37,7 @@ const news = [
 export default function News() {
   return (
     <main className="min-h-screen px-8">
-      <ScrambleText text="Novidades" />
+      <RollingText text="Novidades" />
       {/* <h1 className="relative my-8 text-center text-5xl font-bold tracking-widest uppercase">
         News
       </h1> */}
