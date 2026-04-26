@@ -60,8 +60,30 @@ export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
     };
   }, [text, lines, fontSize]);
 
-  const handleMouseEnter = () => {
-    tlRef.current?.restart();
+  const handleMouseEnter = (e) => {
+    const tl = tlRef.current;
+    if (!tl) return;
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const distances = {
+      top: y,
+      bottom: rect.height - y,
+      left: x,
+      right: rect.width - x,
+    };
+    const closest = Object.entries(distances).reduce((min, curr) =>
+      curr[1] < min[1] ? curr : min,
+    )[0];
+
+    let fromBelow;
+    if (closest === 'top') fromBelow = false;
+    else if (closest === 'bottom') fromBelow = true;
+    else fromBelow = y > rect.height / 2;
+
+    if (fromBelow) tl.restart();
+    else tl.reverse(tl.duration());
   };
 
   return (
