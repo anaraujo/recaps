@@ -33,60 +33,51 @@ export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
     });
 
     const animTime = 0.9;
-    let currentTl = null;
+    let currentAnim = null;
 
-    const play = ({ withRollOut }) => {
-      currentTl?.kill();
-      const tl = gsap.timeline();
+    const mountTl = gsap.timeline();
+    splitLines.forEach((split, index) => {
+      const isLast = index === splitLines.length - 1;
+      mountTl.fromTo(
+        split.chars,
+        { rotationX: -90 },
+        {
+          rotationX: isLast ? 0 : 90,
+          stagger: 0.08,
+          duration: animTime,
+          ease: isLast ? 'power2.out' : 'none',
+          transformOrigin,
+        },
+        index * 0.45,
+      );
+    });
+    currentAnim = mountTl;
 
-      if (withRollOut) {
-        // Roll the currently-visible last line out so the cascade starts from the visible state instead of snapping to empty.
-        const last = splitLines[splitLines.length - 1];
-        tl.fromTo(
-          last.chars,
-          { rotationX: 0 },
-          {
-            rotationX: 90,
-            stagger: 0.08,
-            duration: animTime,
-            ease: 'none',
-            transformOrigin,
-          },
-          0,
-        );
-      }
-
-      splitLines.forEach((split, index) => {
-        const isLast = index === splitLines.length - 1;
-        tl.fromTo(
-          split.chars,
-          { rotationX: -90 },
-          {
-            rotationX: isLast ? 0 : 90,
-            stagger: 0.08,
-            duration: animTime,
-            ease: isLast ? 'power2.out' : 'none',
-            transformOrigin,
-          },
-          index * 0.45,
-        );
-      });
-
-      currentTl = tl;
+    playRef.current = () => {
+      currentAnim?.kill();
+      const last = splitLines[splitLines.length - 1];
+      currentAnim = gsap.fromTo(
+        last.chars,
+        { rotationX: 0 },
+        {
+          rotationX: 360,
+          stagger: 0.08,
+          duration: animTime,
+          ease: 'none',
+          transformOrigin,
+        },
+      );
     };
 
-    playRef.current = play;
-    play({ withRollOut: false });
-
     return () => {
-      currentTl?.kill();
+      currentAnim?.kill();
       playRef.current = () => {};
       splitLines.forEach((split) => split.revert());
     };
   }, [text, lines, fontSize]);
 
   const handleMouseEnter = () => {
-    playRef.current({ withRollOut: true });
+    playRef.current();
   };
 
   return (
