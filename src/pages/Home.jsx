@@ -5,8 +5,15 @@ import MetaBalls from 'components/backgrounds/MetaBalls';
 import FutureSplash from 'components/backgrounds/FutureSplash';
 import Smoothing from 'components/backgrounds/Smoothing';
 import Voronoi from 'components/backgrounds/Voronoi';
+import RadialOrange from 'components/backgrounds/RadialOrange';
 
-const backgrounds = [MetaBalls, FutureSplash, Smoothing, Voronoi];
+const backgrounds = [
+  MetaBalls,
+  FutureSplash,
+  Smoothing,
+  Voronoi,
+  RadialOrange,
+];
 
 export default function Home() {
   const { ref, onPointerMove } = useShineEffect();
