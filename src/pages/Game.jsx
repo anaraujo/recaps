@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ChainLoader from 'components/ChainLoader';
 import CandyCrashLoader from 'components/CandyCrashLoader';
 import RoundedRectanglesLoader from 'components/RoundedRectanglesLoader';
@@ -11,14 +11,6 @@ export default function Game() {
     () => loaders[Math.floor(Math.random() * loaders.length)],
   );
 
-  useEffect(() => {
-    function onMessage(event) {
-      if (event.data === 'godot-ready') setIsLoading(false);
-    }
-    window.addEventListener('message', onMessage);
-    return () => window.removeEventListener('message', onMessage);
-  }, []);
-
   return (
     <>
       {isLoading && (
@@ -26,16 +18,17 @@ export default function Game() {
           <Loader />
         </div>
       )}
-      <main className="flex flex-1 flex-col items-center justify-center">
+      <main className="flex min-h-0 flex-1 flex-col items-center justify-center p-4">
         <div
-          className="border-brand-orange relative overflow-hidden rounded-lg border-2"
+          className="border-brand-orange relative max-h-full w-full max-w-[864px] overflow-hidden rounded-lg border-2"
           style={{ aspectRatio: '864 / 936' }}
         >
           <iframe
-            src="/game/Flappy%20Bee.html"
+            src="https://flappy-bee-recaps.vercel.app/"
             title="Flappy Bee"
             className="h-full w-full border-0"
             allow="autoplay; fullscreen"
+            onLoad={() => setIsLoading(false)}
           />
         </div>
       </main>
