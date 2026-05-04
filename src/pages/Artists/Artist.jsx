@@ -12,7 +12,7 @@ export default function Artist({
   youtubeMusic,
 }) {
   return (
-    <div className="group from-brand-orange hover:to-brand-orange relative aspect-square rounded-[100%] bg-linear-to-t from-25% to-transparent to-25%">
+    <div className="group from-brand-orange hover:to-brand-orange relative mx-auto aspect-square w-full max-w-[325px] rounded-[100%] bg-linear-to-t from-25% to-transparent to-25%">
       <img
         src={image}
         alt={name}
