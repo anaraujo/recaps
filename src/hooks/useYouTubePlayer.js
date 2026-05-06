@@ -83,12 +83,12 @@ export default function useYouTubePlayer({ playlistId }) {
             if (cancelled) return;
             setIsReady(true);
             event.target.setShuffle(true);
-            // advance to the new shuffled first track; autoplay is blocked
-            // without a gesture, but the player still loads the video and
-            // onStateChange will fire with the fresh metadata. We skip
-            // reading getVideoData here so the originally-cued track
-            // doesn't flash before the shuffled one resolves.
-            event.target.playVideoAt(0);
+            // Don't auto-advance/play here. Some browsers honor muted
+            // autoplay or allow playback after a recent gesture, so
+            // calling playVideoAt() is not reliably silent. The footer
+            // will show the originally-cued first track until the user
+            // hits play; shuffle still takes effect for next/prev.
+            handleData(event.target.getVideoData?.());
           },
           onStateChange: (event) => {
             if (cancelled) return;
