@@ -16,20 +16,12 @@ export default function NewsItem({
       {/* Turntable platter */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-zinc-700 via-zinc-800 to-zinc-950 shadow-2xl ring-1 ring-zinc-600/50" />
 
-      {/* Vinyl record (spinning layer) — splatter variant */}
+      {/* Vinyl record (spinning layer) */}
       <div
         className="vinyl-spin absolute inset-[5%] rounded-full bg-zinc-950"
         style={{
-          backgroundImage: [
-            'radial-gradient(ellipse 9% 7% at 22% 28%, #f45203 0%, transparent 65%)',
-            'radial-gradient(ellipse 6% 5% at 72% 18%, #f45203 0%, transparent 65%)',
-            'radial-gradient(ellipse 7% 5% at 60% 78%, #f45203 0%, transparent 65%)',
-            'radial-gradient(ellipse 5% 4% at 16% 68%, #f45203 0%, transparent 65%)',
-            'radial-gradient(ellipse 8% 6% at 82% 56%, #f45203 0%, transparent 65%)',
-            'radial-gradient(ellipse 4% 3% at 45% 12%, #f45203 0%, transparent 65%)',
-            'radial-gradient(ellipse 5% 4% at 88% 82%, #f45203 0%, transparent 65%)',
+          backgroundImage:
             'repeating-radial-gradient(circle at center, #050505 0 1px, #1a1a1a 1px 3px)',
-          ].join(','),
         }}
       >
         {/* Center label */}

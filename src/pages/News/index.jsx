@@ -6,7 +6,6 @@ import bin from 'assets/artists/bin.png';
 import bin2 from 'assets/artists/bin-2.png';
 import RollingText from 'components/RollingText';
 import NewsItem from './NewsItem';
-import NewsItemSleeve from './NewsItemSleeve';
 
 const news = [
   {
@@ -58,21 +57,16 @@ export default function News() {
     <main className="min-h-screen px-8">
       <RollingText text="Novidades" />
       <div className="grid grid-cols-2 gap-20 md:grid-cols-3 lg:grid-cols-4">
-        {news.map(({ name, image, instagram, spotify, youtube }, i) => {
-          // Alternate between splatter (C) and sleeve (D) so both can be
-          // compared side by side. Drop one once you pick a winner.
-          const Item = i % 2 === 0 ? NewsItem : NewsItemSleeve;
-          return (
-            <Item
-              key={i}
-              name={name}
-              image={image}
-              instagram={instagram}
-              spotify={spotify}
-              youtube={youtube}
-            />
-          );
-        })}
+        {news.map(({ name, image, instagram, spotify, youtube }, i) => (
+          <NewsItem
+            key={i}
+            name={name}
+            image={image}
+            instagram={instagram}
+            spotify={spotify}
+            youtube={youtube}
+          />
+        ))}
       </div>
     </main>
   );
