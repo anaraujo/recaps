@@ -11,26 +11,44 @@ const news = [
   {
     name: 'VERO',
     image: vero,
+    instagram: '#',
+    spotify: '#',
+    youtube: '#',
   },
   {
     name: 'VERO',
     image: vero2,
+    instagram: '#',
+    spotify: '#',
+    youtube: '#',
   },
   {
     name: 'kyle fortes',
     image: fortes,
+    instagram: '#',
+    spotify: '#',
+    youtube: '#',
   },
   {
     name: 'kyle fortes',
     image: fortes2,
+    instagram: '#',
+    spotify: '#',
+    youtube: '#',
   },
   {
     name: 'lucasbin',
     image: bin,
+    instagram: '#',
+    spotify: '#',
+    youtube: '#',
   },
   {
     name: 'lucasbin',
     image: bin2,
+    instagram: '#',
+    spotify: '#',
+    youtube: '#',
   },
 ];
 
@@ -38,12 +56,16 @@ export default function News() {
   return (
     <main className="min-h-screen px-8">
       <RollingText text="Novidades" />
-      {/* <h1 className="relative my-8 text-center text-5xl font-bold tracking-widest uppercase">
-        News
-      </h1> */}
       <div className="grid grid-cols-2 gap-20 md:grid-cols-3 lg:grid-cols-4">
-        {news.map(({ name, image }, i) => (
-          <NewsItem key={i} name={name} image={image} />
+        {news.map(({ name, image, instagram, spotify, youtube }, i) => (
+          <NewsItem
+            key={i}
+            name={name}
+            image={image}
+            instagram={instagram}
+            spotify={spotify}
+            youtube={youtube}
+          />
         ))}
       </div>
     </main>

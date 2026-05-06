@@ -43,3 +43,17 @@
     corner-shape: squircle;
   }
 }
+
+@keyframes vinyl-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.vinyl-spin {
+  animation: vinyl-spin 4s linear infinite;
+  animation-play-state: paused;
+}
+
+.group:hover .vinyl-spin {
+  animation-play-state: running;
+}
