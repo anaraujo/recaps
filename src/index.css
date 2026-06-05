@@ -14,6 +14,10 @@
   background: linear-gradient(to right, #151515, #f45203);
 }
 
+.bg-repeating-linear-gradient {
+  background: repeating-linear-gradient(45deg, black, transparent 100px);
+}
+
 .shine-card {
   position: relative;
 }
@@ -45,8 +49,12 @@
 }
 
 @keyframes vinyl-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .vinyl-spin {

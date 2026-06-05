@@ -4,6 +4,7 @@ import fortes from 'assets/artists/fortes.png';
 import fortes2 from 'assets/artists/fortes-2.png';
 import bin from 'assets/artists/bin.png';
 import bin2 from 'assets/artists/bin-2.png';
+import logo from 'assets/favicon.png';
 import Artist from './Artist';
 
 const artists = [
@@ -53,7 +54,7 @@ const artists = [
 
 export default function Artists() {
   return (
-    <main className="ml-60 h-full overflow-auto p-8 pb-16">
+    <main className="bg-repeating-linear-gradient h-full overflow-auto p-8 pb-16 pl-60">
       <div className="gap-6s grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {artists.map(({ name, image, instagram, spotify, youtubeMusic }, i) => (
           <Artist

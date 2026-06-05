@@ -12,7 +12,7 @@ export default function App() {
   return (
     <div className="bg-brand-black text-brand-white h-screen overflow-hidden">
       <Navbar />
-      <main className="flex h-full flex-col">
+      <main className="bg-repeating-linear-gradient flex h-full flex-col pb-8">
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Home />} />

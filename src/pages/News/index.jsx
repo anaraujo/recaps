@@ -54,7 +54,7 @@ const news = [
 
 export default function News() {
   return (
-    <main className="min-h-screen px-8">
+    <main className="min-h-screen px-8 pl-60">
       <RollingText text="Novidades" />
       <div className="grid grid-cols-2 gap-20 md:grid-cols-3 lg:grid-cols-4">
         {news.map(({ name, image, instagram, spotify, youtube }, i) => (

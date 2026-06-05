@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import ChainLoader from 'components/ChainLoader';
 import CandyCrashLoader from 'components/CandyCrashLoader';
 import RoundedRectanglesLoader from 'components/RoundedRectanglesLoader';
 
-const loaders = [ChainLoader, CandyCrashLoader, RoundedRectanglesLoader];
+const loaders = [CandyCrashLoader, RoundedRectanglesLoader];
 
 export default function Game() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,21 +12,21 @@ export default function Game() {
 
   return (
     <>
-      {isLoading && (
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <Loader />
-        </div>
-      )}
-      <main className="flex min-h-0 flex-1 flex-col items-center justify-center p-4">
+      <main className="flex min-h-0 flex-1 flex-col items-center justify-center pl-60">
+        {isLoading && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center">
+            <Loader />
+          </div>
+        )}
         <div
-          className="border-brand-orange relative max-h-full w-full max-w-[864px] overflow-hidden rounded-lg border-2"
-          style={{ aspectRatio: '864 / 936' }}
+          className="border-brand-orange relative h-117 w-108 overflow-hidden rounded-lg border-2"
+          style={{ aspectRatio: '468 / 432' }}
         >
           <iframe
             src="https://flappy-bee-recaps.vercel.app/"
             title="Flappy Bee"
             className="h-full w-full border-0"
-            allow="autoplay; fullscreen"
+            allow="autoplay"
             onLoad={() => setIsLoading(false)}
           />
         </div>
