@@ -10,9 +10,9 @@ const Game = lazy(() => import('pages/Game'));
 
 export default function App() {
   return (
-    <div className="bg-brand-black text-brand-white flex min-h-screen flex-col">
+    <div className="bg-brand-black text-brand-white h-screen overflow-hidden">
       <Navbar />
-      <main className="flex flex-1 flex-col">
+      <main className="flex h-full flex-col">
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -22,6 +22,7 @@ export default function App() {
           </Routes>
         </Suspense>
       </main>
+
       <Footer />
     </div>
   );

@@ -12,7 +12,7 @@ export default function Artist({
   youtubeMusic,
 }) {
   return (
-    <div className="group from-brand-orange hover:to-brand-orange relative mx-auto aspect-square w-full max-w-[325px] rounded-[100%] bg-linear-to-t from-25% to-transparent to-25%">
+    <div className="group from-brand-orange hover:to-brand-orange relative mx-auto aspect-square w-full max-w-81.25 rounded-[100%] bg-linear-to-t from-25% to-transparent to-25%">
       <img
         src={image}
         alt={name}
@@ -24,7 +24,7 @@ export default function Artist({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${name} no Instagram`}
-          className="text-brand-white hover:text-brand-orange hover:mix-blend-difference cursor-pointer"
+          className="text-brand-white hover:text-brand-orange cursor-pointer hover:mix-blend-difference"
         >
           <InstagramLogoIcon size={64} weight="duotone" />
         </a>
@@ -33,7 +33,7 @@ export default function Artist({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${name} no Spotify`}
-          className="text-brand-white hover:text-brand-orange hover:mix-blend-difference cursor-pointer"
+          className="text-brand-white hover:text-brand-orange cursor-pointer hover:mix-blend-difference"
         >
           <SpotifyLogoIcon size={64} weight="duotone" />
         </a>
@@ -42,7 +42,7 @@ export default function Artist({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${name} no YouTube Music`}
-          className="text-brand-white hover:text-brand-orange hover:mix-blend-difference cursor-pointer"
+          className="text-brand-white hover:text-brand-orange cursor-pointer hover:mix-blend-difference"
         >
           <PlayCircleIcon size={64} weight="duotone" />
         </a>

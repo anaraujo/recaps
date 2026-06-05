@@ -15,17 +15,21 @@ export default function ScrambleText({
     const el = textRef.current;
     if (!el) return;
 
-    const tween = gsap.fromTo(el, { opacity: 0 }, {
-      opacity: 1,
-      scrambleText: {
-        text,
-        chars,
-        revealDelay: 0.2,
-        tweenLength: true,
+    const tween = gsap.fromTo(
+      el,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        scrambleText: {
+          text,
+          chars,
+          revealDelay: 0.2,
+          tweenLength: true,
+        },
+        ease: 'power2.inOut',
+        duration,
       },
-      ease: 'power2.inOut',
-      duration,
-    });
+    );
 
     return () => {
       tween.kill();

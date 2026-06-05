@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import logo from 'assets/channels4_profile.jpg';
+import logo from 'assets/favicon.png';
+import RollingText from 'components/RollingText';
 
 const links = [
   { to: '/', label: 'Home' },
@@ -10,38 +11,37 @@ const links = [
 
 export default function Navbar() {
   return (
-    <nav className="text-brand-white bg-brand-orange border-brand-white sticky top-0 z-50 flex w-full items-center justify-between border-b border-solid px-8 py-4">
-      <NavLink
-        to="/"
-        className="flex items-center gap-2 text-xl font-bold tracking-widest uppercase"
+    <nav className="text-brand-white bg-brand-orange/50 border-brand-white absolute left-0 z-50 flex h-full w-60 flex-col justify-between px-12 py-24">
+      <div className="flex flex-col gap-8">
+        <img src={logo} alt="Recaps" className="mx-auto size-32" />
+        <ul className="flex -rotate-4 flex-col gap-6 text-sm font-bold tracking-[0.4rem] lowercase italic">
+          {links.map(({ to, label }) => (
+            <li key={to}>
+              <NavLink
+                to={to}
+                className={({ isActive }) =>
+                  isActive
+                    ? 'text-brand-black hover:text-brand-white underline underline-offset-4'
+                    : 'hover:text-brand-black'
+                }
+              >
+                {label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* <li className="text-brand-black hover:text-brand-white font-semibold"> */}
+      <a
+        href="https://recaps.net.br"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-brand-black -rotate-4 self-end justify-self-end-safe"
       >
-        <img src={logo} alt="Recaps" className="h-8 w-auto" />
-        Recaps
-      </NavLink>
-      <ul className="flex gap-6 text-sm tracking-wider uppercase">
-        {links.map(({ to, label }) => (
-          <li key={to} className="hover:text-brand-black">
-            <NavLink
-              to={to}
-              className={({ isActive }) =>
-                isActive ? 'underline underline-offset-4' : 'hover:opacity-70'
-              }
-            >
-              {label}
-            </NavLink>
-          </li>
-        ))}
-        <li className="text-brand-black hover:text-brand-white font-semibold">
-          <a
-            href="https://recaps.net.br"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-70"
-          >
-            Shop
-          </a>
-        </li>
-      </ul>
+        <RollingText text="Shop" />
+      </a>
+      {/* </li> */}
     </nav>
   );
 }

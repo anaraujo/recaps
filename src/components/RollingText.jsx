@@ -94,7 +94,7 @@ export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
     >
       <div
         onMouseEnter={handleMouseEnter}
-        className="mb-8 grid font-bold uppercase"
+        className="mb-8 grid font-semibold lowercase italic"
       >
         {Array.from({ length: lines }).map((_, i) => (
           <h1
