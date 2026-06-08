@@ -53,46 +53,20 @@ const news = [
 ];
 
 export default function News() {
-  const anyDialog = document.querySelector("[closedby='any']");
-
-  const handleAnyBtnClick = () => {
-    anyDialog.showModal();
-  };
-
   return (
     <main className="min-h-screen px-8 pl-60">
-      <RollingText text="Lançamentos" />
-      <div className="relaive grid grid-cols-2 gap-20 md:grid-cols-3 lg:grid-cols-4">
+      <RollingText text="Novidades" />
+      <div className="grid grid-cols-2 gap-20 md:grid-cols-3 lg:grid-cols-4">
         {news.map(({ name, image, instagram, spotify, youtube }, i) => (
-          <button
-            command="show-modal"
-            commandfor="dialog"
-            onClick={handleAnyBtnClick}
-          >
-            <NewsItem
-              key={i}
-              name={name}
-              image={image}
-              instagram={instagram}
-              spotify={spotify}
-              youtube={youtube}
-            />
-          </button>
+          <NewsItem
+            key={i}
+            name={name}
+            image={image}
+            instagram={instagram}
+            spotify={spotify}
+            youtube={youtube}
+          />
         ))}
-        <el-dialog>
-          <dialog className="m-auto" id="dialog" closedby="any">
-            <h2>
-              <code>closedby="any"</code>
-            </h2>
-            <p>
-              Closable using the "Close" button, the Esc key, or by clicking
-              outside the dialog. "Light dismiss" behavior.
-            </p>
-            <button commandfor="dialog" command="close">
-              Close
-            </button>
-          </dialog>
-        </el-dialog>
       </div>
     </main>
   );

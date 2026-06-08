@@ -13,7 +13,7 @@ export default function Game() {
   return (
     <>
       <main className="flex min-h-0 flex-1 flex-col items-center justify-center pl-60">
-        {isLoading && (
+        {false && (
           <div className="absolute inset-0 z-10 flex items-center justify-center">
             <Loader />
           </div>

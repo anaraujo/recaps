@@ -5,7 +5,7 @@ import RollingText from 'components/RollingText';
 const links = [
   { to: '/', label: 'Home' },
   { to: '/artists', label: 'Artistas' },
-  { to: '/news', label: 'Novidades' },
+  { to: '/news', label: 'Lançamentos' },
   { to: '/game', label: 'Jogo' },
 ];
 
