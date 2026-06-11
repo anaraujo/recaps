@@ -4,6 +4,7 @@
   --color-brand-black: #151515;
   --color-brand-white: #f0efea;
   --color-brand-orange: #f45203;
+  --color-brand-gray: #d1d3d4;
 }
 
 .bg-brand-gradient {
@@ -16,6 +17,16 @@
 
 .bg-repeating-linear-gradient {
   background: repeating-linear-gradient(45deg, black, transparent 100px);
+}
+
+.bg-header-gradient {
+  background: linear-gradient(
+    90deg,
+    #f45203 0%,
+    #fc702b 40%,
+    #fc702b 60%,
+    #fd925e 100%
+  );
 }
 
 .shine-card {
