@@ -4,26 +4,40 @@ import {
   YoutubeLogoIcon,
 } from '@phosphor-icons/react';
 
-export default function NewsItem({ name, image, instagram, spotify, youtube }) {
-  return (
-    <div className="group relative mx-auto aspect-square w-full max-w-[325px]">
-      {/* Turntable platter */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-zinc-700 via-zinc-800 to-zinc-950 shadow-2xl ring-1 ring-zinc-600/50" />
+import planet from 'assets/icons/planet.gif';
+import close from 'assets/icons/close.png';
 
-      {/* Vinyl record (spinning layer) */}
-      <div
-        className="vinyl-spin absolute inset-[5%] rounded-full bg-zinc-950"
-        style={{
-          backgroundImage:
-            'repeating-radial-gradient(circle at center, #050505 0 1px, #1a1a1a 1px 3px)',
-        }}
-      >
-        {/* Center label */}
-        <div className="absolute inset-[34%] overflow-hidden rounded-full ring-2 ring-zinc-900">
-          <img src={image} alt={name} className="h-full w-full object-cover" />
+export default function NewsItem({ name, title, src }) {
+  return (
+    <div className="">
+      {/* dialog header */}
+      <div className="bg-header-gradient flex items-center justify-between rounded-tl-lg border border-solid border-white p-2">
+        <div className="flex items-center gap-2">
+          <img src={planet} alt="Planet" className="w-5" />
+          <span className="text-brand-white text-sm font-bold tracking-[0.2rem] lowercase italic">
+            {title || name}
+          </span>
         </div>
-        {/* Spindle */}
-        <div className="absolute top-1/2 left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-zinc-800" />
+        <button
+          className="bg-brand-white justify-self-end rounded-tl-sm rounded-br-sm p-px"
+          commandfor="dialog"
+          command="close"
+        >
+          <img src={close} alt="Close" className="size-6" />
+        </button>
+      </div>
+      {/* dialog body */}
+      <div className="bg-brand-gray border border-solid border-white p-4">
+        <iframe
+          width="560"
+          height="315"
+          src={src}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   );

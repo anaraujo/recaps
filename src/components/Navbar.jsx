@@ -11,7 +11,7 @@ const links = [
 
 export default function Navbar() {
   return (
-    <nav className="text-brand-white bg-brand-orange/50 border-brand-white absolute left-0 z-50 flex h-full w-60 flex-col justify-between px-12 py-24">
+    <nav className="text-brand-gray bg-brand-orange/50 border-brand-white absolute left-0 z-50 flex h-full w-60 flex-col justify-between px-12 py-24">
       <div className="flex flex-col gap-8">
         <img src={logo} alt="Recaps" className="mx-auto size-32" />
         <ul className="flex -rotate-4 flex-col gap-6 text-sm font-bold tracking-[0.4rem] lowercase italic">
@@ -32,7 +32,6 @@ export default function Navbar() {
         </ul>
       </div>
 
-      {/* <li className="text-brand-black hover:text-brand-white font-semibold"> */}
       <a
         href="https://recaps.net.br"
         target="_blank"
@@ -41,7 +40,6 @@ export default function Navbar() {
       >
         <RollingText text="Shop" />
       </a>
-      {/* </li> */}
     </nav>
   );
 }

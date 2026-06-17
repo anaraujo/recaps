@@ -10,7 +10,7 @@ const Game = lazy(() => import('pages/Game'));
 
 export default function App() {
   return (
-    <div className="bg-brand-black text-brand-white h-screen overflow-hidden">
+    <div className="bg-brand-black text-brand-gray h-screen overflow-hidden">
       <Navbar />
       <main className="bg-repeating-linear-gradient flex h-full flex-col pb-8">
         <Suspense fallback={null}>

@@ -54,8 +54,8 @@ const artists = [
 
 export default function Artists() {
   return (
-    <main className="bg-repeating-linear-gradient h-full overflow-auto p-8 pb-16 pl-60">
-      <div className="gap-6s grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <main className="bg-repeating-linear-gradient h-full overflow-auto p-8 pb-16 pl-69">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {artists.map(({ name, image, instagram, spotify, youtubeMusic }, i) => (
           <Artist
             key={i}

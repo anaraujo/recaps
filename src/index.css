@@ -29,6 +29,16 @@
   );
 }
 
+.bg-invert-header-gradient {
+  background: linear-gradient(
+    90deg,
+    #fd925e 0%,
+    #fc702b 40%,
+    #fc702b 60%,
+    #f45203 100%
+  );
+}
+
 .shine-card {
   position: relative;
 }

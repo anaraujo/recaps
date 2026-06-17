@@ -1,9 +1,4 @@
-import {
-  Pause,
-  Play,
-  SkipBack,
-  SkipForward,
-} from '@phosphor-icons/react';
+import { Pause, Play, SkipBack, SkipForward } from '@phosphor-icons/react';
 import useYouTubePlayer from 'hooks/useYouTubePlayer';
 
 const PLAYLIST_ID = 'PL6_t3YDqAyeMDcWXv06N-rwj4MoeU-pii';
@@ -27,12 +22,12 @@ export default function Footer() {
     <>
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed top-0 -left-[9999px] h-px w-px opacity-0"
+        className="pointer-events-none fixed top-0 -left-2500 h-px w-px opacity-0"
       >
         <div ref={containerRef} title="Player de rádio do YouTube" />
       </div>
 
-      <footer className="bg-brand-black border-brand-orange/40 text-brand-white sticky bottom-0 z-50 flex h-8 items-center gap-3 border-t px-4 text-xs">
+      <footer className="bg-invert-header-gradient text-brand-black border-brand-orange/40 sticky bottom-0 z-50 flex h-8 items-center gap-3 border border-t border-solid px-4 text-xs">
         <button
           type="button"
           onClick={prev}
@@ -85,7 +80,7 @@ export default function Footer() {
           )}
         </div>
 
-        <span className="hidden sm:inline">
+        <span className="text-brand-gray hidden sm:inline">
           underground, mas mal feito não <strong>© 2026, RECAPS</strong>
         </span>
       </footer>
