@@ -1,6 +1,6 @@
 import folder from 'assets/icons/orange-folder.png';
 import openFolder from 'assets/icons/orange-open-folder.png';
-import NewsItem from './NewsItem';
+import NewsDialog from './NewsDialog';
 import { useState } from 'react';
 
 const news = [
@@ -53,8 +53,8 @@ export default function News() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <main className="min-h-screen p-8 pb-16 pl-69">
-      <div className="relaive grid grid-cols-2 gap-20 md:grid-cols-3 lg:grid-cols-4">
+    <main className="min-h-screen pt-24 pr-8 pb-16 pl-69">
+      <div className="relative grid grid-cols-1 gap-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-8">
         {news.map(({ name, title, src, instagram, spotify, youtube }, i) => {
           const dialogId = `dialog-${i}`;
 
@@ -63,33 +63,26 @@ export default function News() {
               <button
                 command="show-modal"
                 commandfor={dialogId}
-                className="flex h-48 flex-col items-center justify-end gap-2 p-3"
+                className="flex flex-col items-center justify-end gap-2 p-3"
                 onClick={() => setOpenIndex(i)}
               >
                 <img
                   src={openIndex === i ? openFolder : folder}
                   alt="Folder"
-                  className="max-w-36"
+                  className="max-w-28"
                 />
                 <span className="bg-brand-white text-brand-black px-2 py-0.5 text-sm">
                   {name}
                 </span>
               </button>
 
-              <dialog
-                className="border-brand-gray m-auto rounded-tl-lg rounded-br-lg border border-solid backdrop:bg-gray-900/50"
-                id={dialogId}
-                closedby="any"
+              <NewsDialog
+                dialogId={dialogId}
+                title={title}
+                name={name}
+                src={src}
                 onClose={() => setOpenIndex(null)}
-              >
-                <NewsItem
-                  dialogId={dialogId}
-                  title={title}
-                  name={name}
-                  src={src}
-                  onClose={() => setOpenIndex(null)}
-                />
-              </dialog>
+              />
             </div>
           );
         })}

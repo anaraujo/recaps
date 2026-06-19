@@ -7,12 +7,22 @@ import {
 import planet from 'assets/icons/planet.gif';
 import close from 'assets/icons/close.png';
 
-export default function NewsItem({ dialogId, name, title, src, onClose }) {
+export default function NewsItem({
+  dialogId,
+  name,
+  title,
+  src,
+  onClose,
+  onDragHandlePointerDown,
+}) {
   return (
     <div className="">
       {/* dialog header */}
       <div className="bg-header-gradient flex items-center justify-between rounded-tl-lg border border-solid border-white p-2">
-        <div className="flex items-center gap-2">
+        <div
+          className="flex flex-1 cursor-grab items-center gap-2 active:cursor-grabbing"
+          onPointerDown={onDragHandlePointerDown}
+        >
           <img src={planet} alt="Planet" className="w-5" />
           <span className="text-brand-white text-sm font-bold tracking-[0.2rem] lowercase italic">
             {title || name}
