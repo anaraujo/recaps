@@ -19,11 +19,11 @@ export default function Game() {
           </div>
         )}
         <div
-          className="border-brand-orange relative h-117 w-108 overflow-hidden rounded-lg border-2"
-          style={{ aspectRatio: '468 / 432' }}
+          className="border-brand-orange relative h-full max-h-800 max-w-800 overflow-hidden rounded-lg border-2"
+          style={{ aspectRatio: '1 / 1' }}
         >
           <iframe
-            src="https://flappy-bee-recaps.vercel.app/"
+            src="https://flappy-bee-pi.vercel.app/"
             title="Flappy Bee"
             className="h-full w-full border-0"
             allow="autoplay"

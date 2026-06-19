@@ -2,18 +2,12 @@ import { useState } from 'react';
 import useShineEffect from 'hooks/useShineEffect';
 import comeCloser from 'assets/icons/come-closer.gif';
 import MetaBalls from 'components/backgrounds/MetaBalls';
-import FutureSplash from 'components/backgrounds/FutureSplash';
+// import FutureSplash from 'components/backgrounds/FutureSplash';
 import Smoothing from 'components/backgrounds/Smoothing';
 import Voronoi from 'components/backgrounds/Voronoi';
 import RadialOrange from 'components/backgrounds/RadialOrange';
 
-const backgrounds = [
-  MetaBalls,
-  FutureSplash,
-  Smoothing,
-  Voronoi,
-  RadialOrange,
-];
+const backgrounds = [MetaBalls, Smoothing, Voronoi, RadialOrange];
 
 export default function Home() {
   const { ref, onPointerMove } = useShineEffect();
