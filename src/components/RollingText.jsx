@@ -8,6 +8,7 @@ export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
   const containerRef = useRef(null);
   const lineRefs = useRef([]);
   const tlRef = useRef(null);
+  const lastHoverRef = useRef(0);
 
   useEffect(() => {
     gsap.set(containerRef.current, { visibility: 'visible' });
@@ -18,9 +19,6 @@ export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
       (line) => new SplitText(line, { type: 'chars', charsClass: 'char' }),
     );
 
-    // Depth scales with the actual rendered font size so the rotation axis
-    // sits behind the letters regardless of how big or small the text is.
-    // Ratio matches the original pen: depth ≈ -0.694 × font-size.
     const fontSizePx = parseFloat(
       window.getComputedStyle(lineRefs.current[0]).fontSize,
     );
@@ -52,6 +50,7 @@ export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
     });
 
     tlRef.current = tl;
+    lastHoverRef.current = Date.now();
 
     return () => {
       tl.kill();
@@ -60,30 +59,16 @@ export default function RollingText({ text, lines = 4, fontSize = '3rem' }) {
     };
   }, [text, lines, fontSize]);
 
-  const handleMouseEnter = (e) => {
+  const handleMouseEnter = () => {
     const tl = tlRef.current;
     if (!tl) return;
 
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const distances = {
-      top: y,
-      bottom: rect.height - y,
-      left: x,
-      right: rect.width - x,
-    };
-    const closest = Object.entries(distances).reduce((min, curr) =>
-      curr[1] < min[1] ? curr : min,
-    )[0];
+    const throttleMs = tl.duration() * 1000;
+    const now = Date.now();
+    if (now - lastHoverRef.current < throttleMs) return;
 
-    let fromBelow;
-    if (closest === 'top') fromBelow = false;
-    else if (closest === 'bottom') fromBelow = true;
-    else fromBelow = y > rect.height / 2;
-
-    if (fromBelow) tl.restart();
-    else tl.reverse(tl.duration());
+    lastHoverRef.current = now;
+    tl.restart();
   };
 
   return (
