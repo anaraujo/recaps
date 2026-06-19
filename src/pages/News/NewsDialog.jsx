@@ -8,18 +8,18 @@ export default function NewsDialog({
   src,
   onClose,
 }) {
-  const { dialogRef, centerDialog, onDragHandlePointerDown } =
+  const { dialogRef, resetDialogPosition, onDragHandlePointerDown } =
     useDraggableDialog();
 
   return (
     <dialog
       ref={dialogRef}
-      className="border-brand-gray fixed m-0 rounded-tl-lg rounded-br-lg border border-solid backdrop:bg-gray-900/50"
+      className="border-brand-gray fixed top-1/2 left-1/2 m-0 -translate-x-1/2 -translate-y-1/2 rounded-tl-lg rounded-br-lg border border-solid backdrop:bg-gray-900/50"
       id={dialogId}
       closedby="any"
       onClose={onClose}
       onToggle={(e) => {
-        if (e.newState === 'open') centerDialog();
+        if (e.newState === 'closed') resetDialogPosition();
       }}
     >
       <NewsItem

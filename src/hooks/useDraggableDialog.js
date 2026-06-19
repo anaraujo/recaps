@@ -3,16 +3,14 @@ import { useCallback, useRef } from 'react';
 export default function useDraggableDialog() {
   const dialogRef = useRef(null);
 
-  const centerDialog = useCallback(() => {
-    requestAnimationFrame(() => {
-      const dialog = dialogRef.current;
-      if (!dialog) return;
+  const resetDialogPosition = useCallback(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
 
-      const rect = dialog.getBoundingClientRect();
-      dialog.style.margin = '0';
-      dialog.style.left = `${(window.innerWidth - rect.width) / 2}px`;
-      dialog.style.top = `${(window.innerHeight - rect.height) / 2}px`;
-    });
+    dialog.style.left = '';
+    dialog.style.top = '';
+    dialog.style.transform = '';
+    dialog.style.margin = '';
   }, []);
 
   const onDragHandlePointerDown = useCallback((e) => {
@@ -26,6 +24,7 @@ export default function useDraggableDialog() {
 
     const rect = dialog.getBoundingClientRect();
     dialog.style.margin = '0';
+    dialog.style.transform = 'none';
     dialog.style.left = `${rect.left}px`;
     dialog.style.top = `${rect.top}px`;
 
@@ -51,5 +50,5 @@ export default function useDraggableDialog() {
     handle.addEventListener('pointercancel', endDrag);
   }, []);
 
-  return { dialogRef, centerDialog, onDragHandlePointerDown };
+  return { dialogRef, resetDialogPosition, onDragHandlePointerDown };
 }
