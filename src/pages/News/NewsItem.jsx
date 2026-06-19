@@ -7,7 +7,7 @@ import {
 import planet from 'assets/icons/planet.gif';
 import close from 'assets/icons/close.png';
 
-export default function NewsItem({ name, title, src }) {
+export default function NewsItem({ dialogId, name, title, src, onClose }) {
   return (
     <div className="">
       {/* dialog header */}
@@ -20,8 +20,9 @@ export default function NewsItem({ name, title, src }) {
         </div>
         <button
           className="bg-brand-white justify-self-end rounded-tl-sm rounded-br-sm p-px"
-          commandfor="dialog"
+          commandfor={dialogId}
           command="close"
+          onClick={onClose}
         >
           <img src={close} alt="Close" className="size-6" />
         </button>
