@@ -13,15 +13,17 @@ const news = [
     youtube: '#',
   },
   {
-    name: 'VERO',
-    src: 'https://www.youtube.com/embed/3AoEVp56XP8?si=KJhCxfnMED2A7bAf',
+    name: 'lucasbin',
+    title: 'lucasbin - CONTRACULTURA (Álbum Completo)',
+    src: 'https://www.youtube.com/embed/JE_dMg593dQ?si=2CeKvYG38SImnyuM',
     instagram: '#',
     spotify: '#',
     youtube: '#',
   },
   {
-    name: 'kyle fortes',
-    src: 'https://www.youtube.com/embed/3AoEVp56XP8?si=KJhCxfnMED2A7bAf',
+    name: 'VERO',
+    title: 'VERO No Sótão (live session)',
+    src: 'https://www.youtube.com/embed/mlq6sjhA50w?si=MoLfXgsTupR04Wg0',
     instagram: '#',
     spotify: '#',
     youtube: '#',
@@ -54,7 +56,7 @@ export default function News() {
 
   return (
     <main className="min-h-screen pt-24 pr-8 pb-16 pl-69">
-      <div className="relative grid grid-cols-1 gap-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-8">
+      <div className="relative grid grid-cols-[repeat(auto-fill,minmax(min(100%,10rem),1fr))] gap-20">
         {news.map(({ name, title, src, instagram, spotify, youtube }, i) => {
           const dialogId = `dialog-${i}`;
 
@@ -63,14 +65,16 @@ export default function News() {
               <button
                 command="show-modal"
                 commandfor={dialogId}
-                className="flex flex-col items-center justify-end gap-2 p-3"
+                className="flex w-full flex-col items-center justify-end gap-2 p-3"
                 onClick={() => setOpenIndex(i)}
               >
-                <img
-                  src={openIndex === i ? openFolder : folder}
-                  alt="Folder"
-                  className="max-w-28"
-                />
+                <div className="flex h-28 w-full items-end justify-center">
+                  <img
+                    src={openIndex === i ? openFolder : folder}
+                    alt="Folder"
+                    className="w-auto max-w-28 object-contain"
+                  />
+                </div>
                 <span className="bg-brand-white text-brand-black px-2 py-0.5 text-sm">
                   {name}
                 </span>
@@ -81,6 +85,7 @@ export default function News() {
                 title={title}
                 name={name}
                 src={src}
+                isOpen={openIndex === i}
                 onClose={() => setOpenIndex(null)}
               />
             </div>

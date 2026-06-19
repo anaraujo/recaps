@@ -6,6 +6,7 @@ export default function NewsDialog({
   title,
   name,
   src,
+  isOpen,
   onClose,
 }) {
   const { dialogRef, resetDialogPosition, onDragHandlePointerDown } =
@@ -27,6 +28,7 @@ export default function NewsDialog({
         title={title}
         name={name}
         src={src}
+        isOpen={isOpen}
         onClose={onClose}
         onDragHandlePointerDown={onDragHandlePointerDown}
       />
