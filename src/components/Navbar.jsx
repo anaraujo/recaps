@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from 'assets/favicon.png';
+import { links } from 'data/site.json';
 
 const RollingText = lazy(() => import('components/RollingText'));
 
@@ -10,13 +11,6 @@ const routePrefetchers = {
   '/news': () => import('pages/News'),
   '/game': () => import('pages/Game'),
 };
-
-const links = [
-  { to: '/', label: 'Home' },
-  { to: '/artists', label: 'Artistas' },
-  { to: '/news', label: 'Lançamentos' },
-  { to: '/game', label: 'Jogo' },
-];
 
 const shopFallbackClass =
   'mb-8 text-5xl font-semibold lowercase italic leading-none tracking-tight';

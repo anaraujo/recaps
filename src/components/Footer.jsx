@@ -1,7 +1,6 @@
 import { Pause, Play, SkipBack, SkipForward } from '@phosphor-icons/react';
 import useYouTubePlayer from 'hooks/useYouTubePlayer';
-
-const PLAYLIST_ID = 'PL6_t3YDqAyeMDcWXv06N-rwj4MoeU-pii';
+import { playlistId } from 'data/site.json';
 
 export default function Footer() {
   const {
@@ -13,7 +12,7 @@ export default function Footer() {
     next,
     prev,
     error,
-  } = useYouTubePlayer({ playlistId: PLAYLIST_ID });
+  } = useYouTubePlayer({ playlistId });
 
   const buttonClass =
     'cursor-pointer hover:text-brand-orange disabled:cursor-default disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-brand-orange';

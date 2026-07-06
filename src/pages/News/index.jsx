@@ -1,55 +1,8 @@
 import { useCallback, useState } from 'react';
 import folder from 'assets/icons/orange-folder.png';
 import openFolder from 'assets/icons/orange-open-folder.png';
+import news from 'data/news.json';
 import NewsDialog from './NewsDialog';
-
-const news = [
-  {
-    name: 'Kyle Fortes',
-    title: '"Deusvemdeovni", por Kyle Fortes e lucasbin',
-    src: 'https://www.youtube.com/embed/3AoEVp56XP8?si=KJhCxfnMED2A7bAf',
-    instagram: '#',
-    spotify: '#',
-    youtube: '#',
-  },
-  {
-    name: 'lucasbin',
-    title: 'lucasbin - CONTRACULTURA (Álbum Completo)',
-    src: 'https://www.youtube.com/embed/JE_dMg593dQ?si=2CeKvYG38SImnyuM',
-    instagram: '#',
-    spotify: '#',
-    youtube: '#',
-  },
-  {
-    name: 'VERO',
-    title: 'VERO No Sótão (live session)',
-    src: 'https://www.youtube.com/embed/mlq6sjhA50w?si=MoLfXgsTupR04Wg0',
-    instagram: '#',
-    spotify: '#',
-    youtube: '#',
-  },
-  {
-    name: 'kyle fortes',
-    src: 'https://www.youtube.com/embed/3AoEVp56XP8?si=KJhCxfnMED2A7bAf',
-    instagram: '#',
-    spotify: '#',
-    youtube: '#',
-  },
-  {
-    name: 'lucasbin',
-    src: 'https://www.youtube.com/embed/3AoEVp56XP8?si=KJhCxfnMED2A7bAf',
-    instagram: '#',
-    spotify: '#',
-    youtube: '#',
-  },
-  {
-    name: 'lucasbin',
-    src: 'https://www.youtube.com/embed/3AoEVp56XP8?si=KJhCxfnMED2A7bAf',
-    instagram: '#',
-    spotify: '#',
-    youtube: '#',
-  },
-];
 
 export default function News() {
   const [openIndex, setOpenIndex] = useState(null);

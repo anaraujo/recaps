@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const artistsDir = path.resolve(__dirname, '../src/assets/artists');
+const artistsDir = path.resolve(__dirname, '../public/artists');
 const MAX_SIZE = 600;
 
 const files = (await readdir(artistsDir)).filter((f) => f.endsWith('.png'));
