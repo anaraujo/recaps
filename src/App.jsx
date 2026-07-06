@@ -13,7 +13,13 @@ export default function App() {
     <div className="bg-brand-black text-brand-gray h-screen overflow-hidden">
       <Navbar />
       <main className="bg-repeating-linear-gradient flex h-full flex-col pb-8">
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={
+            <div className="flex flex-1 items-center justify-center">
+              <div className="border-brand-orange size-8 animate-spin rounded-full border-2 border-t-transparent" />
+            </div>
+          }
+        >
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/artists" element={<Artists />} />
