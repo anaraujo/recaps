@@ -1,0 +1,46 @@
+media:
+  - name: artists
+    label: Artist images
+    input: public/artists
+    output: /artists
+
+content:
+  - name: artists
+    label: Artists
+    type: file
+    path: src/data/artists.json
+    list: true
+    fields:
+      - { name: name, label: Name, type: string }
+      - { name: slug, label: Slug, type: string }
+      - { name: instagram, label: Instagram, type: string, pattern: "url" }
+      - { name: spotify, label: Spotify, type: string }
+      - { name: youtubeMusic, label: YouTube Music, type: string }
+      - { name: images, label: Images, type: image, list: true, options: { media: artists } }
+
+  - name: news
+    label: Releases
+    type: file
+    path: src/data/news.json
+    list: true
+    fields:
+      - { name: name, label: Artist name, type: string }
+      - { name: title, label: Title, type: string }
+      - { name: src, label: YouTube embed URL, type: string }
+      - { name: instagram, label: Instagram, type: string }
+      - { name: spotify, label: Spotify, type: string }
+      - { name: youtube, label: YouTube, type: string }
+
+  - name: site
+    label: Site settings
+    type: file
+    path: src/data/site.json
+    fields:
+      - name: links
+        label: Nav links
+        type: object
+        list: true
+        fields:
+          - { name: to, label: Path, type: string }
+          - { name: label, label: Label, type: string }
+      - { name: playlistId, label: Radio playlist ID, type: string }
