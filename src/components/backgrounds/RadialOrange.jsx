@@ -1,5 +1,9 @@
 import { useEffect, useRef } from 'react';
 import paper from 'paper';
+import {
+  bindVisibilityPause,
+  setupPaperScope,
+} from 'utils/paperCanvas';
 
 export default function RadialOrange() {
   const canvasRef = useRef(null);
@@ -7,7 +11,7 @@ export default function RadialOrange() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const scope = new paper.PaperScope();
-    scope.setup(canvas);
+    setupPaperScope(scope, canvas);
 
     let point = scope.view.center;
 
@@ -55,7 +59,7 @@ export default function RadialOrange() {
       mouseDown = false;
     };
 
-    scope.view.onFrame = () => {
+    const onFrame = () => {
       phase += 0.08;
       for (let i = 0; i < gradient.stops.length; i++) {
         const t = (i / stops) * cycles * Math.PI * 2 + phase;
@@ -74,6 +78,14 @@ export default function RadialOrange() {
       color.highlight = mouseDown ? point : point.add(vector);
     };
 
+    scope.view.onFrame = onFrame;
+    const unbindVisibility = bindVisibilityPause(
+      () => onFrame,
+      (handler) => {
+        scope.view.onFrame = handler;
+      },
+    );
+
     scope.view.onResize = () => {
       point = scope.view.center;
       path.bounds = scope.view.bounds;
@@ -85,6 +97,7 @@ export default function RadialOrange() {
     };
 
     return () => {
+      unbindVisibility();
       tool.remove();
       scope.view.onFrame = null;
       scope.view.onResize = null;

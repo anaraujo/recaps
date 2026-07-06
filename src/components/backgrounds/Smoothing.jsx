@@ -1,5 +1,10 @@
 import { useEffect, useRef } from 'react';
 import paper from 'paper';
+import {
+  bindVisibilityPause,
+  rafThrottle,
+  setupPaperScope,
+} from 'utils/paperCanvas';
 
 export default function Smoothing() {
   const canvasRef = useRef(null);
@@ -7,7 +12,7 @@ export default function Smoothing() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const scope = new paper.PaperScope();
-    scope.setup(canvas);
+    setupPaperScope(scope, canvas);
 
     const points = 10;
     let width, height, pathHeight;
@@ -35,7 +40,7 @@ export default function Smoothing() {
       mousePos = event.point;
     };
 
-    scope.view.onFrame = (event) => {
+    const onFrame = (event) => {
       pathHeight += (scope.view.center.y - mousePos.y - pathHeight) / 10;
       for (let i = 1; i < points; i++) {
         const sinSeed = event.count + (i + (i % 10)) * 100;
@@ -46,7 +51,16 @@ export default function Smoothing() {
       path.smooth({ type: 'continuous' });
     };
 
+    scope.view.onFrame = onFrame;
+    const unbindVisibility = bindVisibilityPause(
+      () => onFrame,
+      (handler) => {
+        scope.view.onFrame = handler;
+      },
+    );
+
     return () => {
+      unbindVisibility();
       tool.remove();
       scope.view.onFrame = null;
       scope.project.clear();

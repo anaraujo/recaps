@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import paper from 'paper';
 import VoronoiLib from 'voronoi';
+import { rafThrottle, setupPaperScope } from 'utils/paperCanvas';
 
 export default function Voronoi() {
   const canvasRef = useRef(null);
@@ -8,7 +9,7 @@ export default function Voronoi() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const scope = new paper.PaperScope();
-    scope.setup(canvas);
+    setupPaperScope(scope, canvas);
 
     const voronoi = new VoronoiLib();
     const spotColor = '#f45203';
@@ -101,10 +102,10 @@ export default function Voronoi() {
     renderDiagram();
 
     const tool = new scope.Tool();
-    tool.onMouseMove = (event) => {
+    tool.onMouseMove = rafThrottle((event) => {
       sites[sites.length - 1] = event.point;
       renderDiagram();
-    };
+    });
 
     return () => {
       tool.remove();

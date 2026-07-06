@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import paper from 'paper';
+import { rafThrottle, setupPaperScope } from 'utils/paperCanvas';
 
 export default function MetaBalls() {
   const canvasRef = useRef(null);
@@ -7,7 +8,7 @@ export default function MetaBalls() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const scope = new paper.PaperScope();
-    scope.setup(canvas);
+    setupPaperScope(scope, canvas);
 
     scope.project.currentStyle = { fillColor: '#f45203' };
 
@@ -111,10 +112,10 @@ export default function MetaBalls() {
     generateConnections(circlePaths);
 
     const tool = new scope.Tool();
-    tool.onMouseMove = (event) => {
+    tool.onMouseMove = rafThrottle((event) => {
       largeCircle.position = event.point;
       generateConnections(circlePaths);
-    };
+    });
 
     return () => {
       tool.remove();
