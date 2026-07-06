@@ -4,7 +4,6 @@ import fortes from 'assets/artists/fortes.png';
 import fortes2 from 'assets/artists/fortes-2.png';
 import bin from 'assets/artists/bin.png';
 import bin2 from 'assets/artists/bin-2.png';
-import logo from 'assets/favicon.png';
 import Artist from './Artist';
 
 const artists = [
