@@ -2,5 +2,6 @@ node_modules
 dist
 .env
 .claude
+.cursor
 .DS_Store
 public/game
