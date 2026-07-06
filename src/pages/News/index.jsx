@@ -1,7 +1,7 @@
+import { useCallback, useState } from 'react';
 import folder from 'assets/icons/orange-folder.png';
 import openFolder from 'assets/icons/orange-open-folder.png';
 import NewsDialog from './NewsDialog';
-import { useState } from 'react';
 
 const news = [
   {
@@ -53,12 +53,14 @@ const news = [
 
 export default function News() {
   const [openIndex, setOpenIndex] = useState(null);
+  const handleClose = useCallback(() => setOpenIndex(null), []);
 
   return (
     <main className="min-h-screen pt-24 pr-8 pb-16 pl-69">
       <div className="relative grid grid-cols-[repeat(auto-fill,minmax(min(100%,10rem),1fr))] gap-20">
         {news.map(({ name, title, src, instagram, spotify, youtube }, i) => {
           const dialogId = `dialog-${i}`;
+          const isOpen = openIndex === i;
 
           return (
             <div key={i}>
@@ -70,7 +72,7 @@ export default function News() {
               >
                 <div className="flex h-28 w-full items-end justify-center">
                   <img
-                    src={openIndex === i ? openFolder : folder}
+                    src={isOpen ? openFolder : folder}
                     alt="Folder"
                     className="w-auto max-w-28 object-contain"
                   />
@@ -80,14 +82,16 @@ export default function News() {
                 </span>
               </button>
 
-              <NewsDialog
-                dialogId={dialogId}
-                title={title}
-                name={name}
-                src={src}
-                isOpen={openIndex === i}
-                onClose={() => setOpenIndex(null)}
-              />
+              {isOpen && (
+                <NewsDialog
+                  dialogId={dialogId}
+                  title={title}
+                  name={name}
+                  src={src}
+                  isOpen
+                  onClose={handleClose}
+                />
+              )}
             </div>
           );
         })}

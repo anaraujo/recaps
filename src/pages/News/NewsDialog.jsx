@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import useDraggableDialog from 'hooks/useDraggableDialog';
 import NewsItem from './NewsItem';
 
@@ -11,6 +12,14 @@ export default function NewsDialog({
 }) {
   const { dialogRef, resetDialogPosition, onDragHandlePointerDown } =
     useDraggableDialog();
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (dialog && !dialog.open) dialog.showModal();
+    return () => {
+      if (dialog?.open) dialog.close();
+    };
+  }, [dialogRef]);
 
   return (
     <dialog
