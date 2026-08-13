@@ -9,6 +9,7 @@ const routePrefetchers = {
   '/': () => import('pages/Home'),
   '/artists': () => import('pages/Artists'),
   '/news': () => import('pages/News'),
+  '/archive': () => import('pages/Archive'),
   '/game': () => import('pages/Game'),
 };
 

@@ -3,6 +3,7 @@
     { "to": "/", "label": "Home" },
     { "to": "/artists", "label": "Artistas" },
     { "to": "/news", "label": "Lançamentos" },
+    { "to": "/archive", "label": "Arquivo" },
     { "to": "/game", "label": "Jogo" }
   ],
   "playlistId": "PL6_t3YDqAyeMDcWXv06N-rwj4MoeU-pii"

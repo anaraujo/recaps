@@ -7,6 +7,7 @@ A React single-page app for the Recaps brand, with animated backgrounds, text ef
 - **Home** (`/`) — landing page with a randomized animated background (MetaBalls, FutureSplash, Smoothing, or Voronoi) and a shine-effect card.
 - **Artists** (`/artists`) — artist directory with a rolling 3D heading animation.
 - **News** (`/news`) — news feed with a scramble-text heading.
+- **Archive** (`/archive`) — documents to share with the community.
 - **Game** (`/game`) — game page.
 
 ## Stack
