@@ -1,6 +1,6 @@
 import { lazy, Suspense, useState } from 'react';
 import useShineEffect from 'hooks/useShineEffect';
-import comeCloser from 'assets/icons/come-closer.gif';
+import Planet from 'assets/icons/planet.gif';
 import { prefersReducedMotion } from 'utils/paperCanvas';
 
 const backgroundLoaders = [
@@ -31,6 +31,11 @@ export default function Home() {
       )}
 
       <div ref={ref} className="shine-card relative rounded-[100%] px-12 py-8">
+        <img
+          src={Planet}
+          alt="planeta"
+          className="absolute inset-0 z-10 m-auto max-h-64 max-w-64"
+        />
         <h1 className="relative z-20 text-5xl font-bold tracking-widest uppercase">
           Recaps
         </h1>

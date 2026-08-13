@@ -8,6 +8,7 @@ A React single-page app for the Recaps brand, with animated backgrounds, text ef
 - **Artists** (`/artists`) — artist directory with a rolling 3D heading animation.
 - **News** (`/news`) — news feed with a scramble-text heading.
 - **Archive** (`/archive`) — documents to share with the community.
+- **About** (`/about`) — more info about recaps.
 - **Game** (`/game`) — game page.
 
 ## Stack
