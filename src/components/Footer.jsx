@@ -26,7 +26,7 @@ export default function Footer() {
         <div ref={containerRef} title="Player de rádio do YouTube" />
       </div>
 
-      <footer className="bg-invert-header-gradient text-brand-black border-brand-orange/40 sticky bottom-0 z-50 flex h-8 items-center gap-3 border border-t border-solid px-4 text-xs">
+      <footer className="bg-invert-header-gradient text-brand-black border-brand-orange/40 sticky bottom-0 z-40 flex h-8 items-center gap-3 border border-t border-solid px-4 text-xs">
         <button
           type="button"
           onClick={prev}

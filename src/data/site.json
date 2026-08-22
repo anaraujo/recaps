@@ -1,11 +1,11 @@
 {
   "links": [
-    { "to": "/", "label": "Home" },
-    { "to": "/artists", "label": "Artistas" },
-    { "to": "/news", "label": "Lançamentos" },
-    { "to": "/archive", "label": "Arquivo" },
-    { "to": "/about", "label": "Sobre a recaps" },
-    { "to": "/game", "label": "Jogo" }
+    { "to": "/", "iconName": "application", "label": "Home" },
+    { "to": "/artists", "iconName": "cd", "label": "Artistas" },
+    { "to": "/news", "iconName": "phone", "label": "Lançamentos" },
+    { "to": "/archive", "iconName": "folder", "label": "Arquivo" },
+    { "to": "/about", "iconName": "book", "label": "Sobre a recaps" },
+    { "to": "/game", "iconName": "pc", "label": "Jogo" }
   ],
   "playlistId": "PL6_t3YDqAyeMDcWXv06N-rwj4MoeU-pii"
 }
