@@ -1,10 +1,16 @@
 @import 'tailwindcss';
 
 @theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-secondary:
+    'Microsoft Sans Serif', 'MS Sans Serif', Tahoma, Geneva, Verdana,
+    ui-sans-serif, sans-serif;
   --color-brand-black: #151515;
   --color-brand-white: #f0efea;
   --color-brand-orange: #f45203;
   --color-brand-gray: #d1d3d4;
+  --color-brand-light-gray: #bfc3c9;
+  --color-brand-dark-gray: #84888d;
 }
 
 .bg-brand-gradient {
