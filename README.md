@@ -50,3 +50,4 @@ src/
 ```
 
 Path aliases (`assets`, `components`, `hooks`, `pages`) are configured in [vite.config.js](vite.config.js).
+
