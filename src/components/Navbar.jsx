@@ -1,38 +1,9 @@
-import { lazy, Suspense, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import application from 'assets/icons/application.png';
-import book from 'assets/icons/book.png';
-import cd from 'assets/icons/cd.png';
-import file from 'assets/icons/file.png';
-import folder from 'assets/icons/old-open-folder.png';
+import { lazy, useEffect } from 'react';
 import globe from 'assets/icons/globe.png';
-import pc from 'assets/icons/pc.png';
-import phone from 'assets/icons/phone.png';
-import lab from 'assets/icons/lab.png';
 import { links } from 'data/site.json';
+import NavbarItem from 'components/molecules/NavbarItem';
 
 const RollingText = lazy(() => import('components/RollingText'));
-
-const routePrefetchers = {
-  '/': () => import('pages/Home'),
-  '/artists': () => import('pages/Artists'),
-  '/news': () => import('pages/News'),
-  '/archive': () => import('pages/Archive'),
-  '/game': () => import('pages/Game'),
-  // '/shows': () => import('pages/Shows'),
-};
-
-const icons = {
-  application,
-  book,
-  cd,
-  file,
-  folder,
-  globe,
-  pc,
-  phone,
-  lab,
-};
 
 const shopFallbackClass =
   'mb-8 text-5xl font-semibold lowercase italic leading-none tracking-tight';
@@ -55,23 +26,7 @@ export default function Navbar() {
           <ul className="flex flex-col gap-6 pt-6 pb-3 text-xl">
             {links.map(({ to, iconName, label }) => (
               <li className="group hover:bg-brand-orange py-2" key={to}>
-                <NavLink
-                  to={to}
-                  onMouseEnter={() => routePrefetchers[to]?.()}
-                  onFocus={() => routePrefetchers[to]?.()}
-                  className={({ isActive }) =>
-                    `font-secondary flex items-center gap-x-6 px-3 ${
-                      isActive
-                        ? 'text-brand-black group-hover:text-brand-white underline underline-offset-4'
-                        : 'group-hover:text-brand-white'
-                    }`
-                  }
-                >
-                  <img src={icons[iconName]} alt="Recaps" className="size-10" />
-                  <span className="inline-block first-letter:underline">
-                    {label}
-                  </span>
-                </NavLink>
+                <NavbarItem to={to} iconName={iconName} label={label} />
               </li>
             ))}
           </ul>
