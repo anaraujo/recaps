@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import NavIcon from 'components/atoms/NavIcon';
 import application from 'assets/icons/application.png';
 import book from 'assets/icons/book.png';
 import cd from 'assets/icons/cd.png';
@@ -44,7 +45,7 @@ export default function NavbarItem({ to, iconName, label }) {
         }`
       }
     >
-      <img src={icons[iconName]} alt="Recaps" className="size-10" />
+      <NavIcon src={icons[iconName]} />
       <span className="inline-block first-letter:underline">{label}</span>
     </NavLink>
   );

@@ -2,6 +2,8 @@ import { lazy, useEffect } from 'react';
 import globe from 'assets/icons/globe.png';
 import { links } from 'data/site.json';
 import NavbarItem from 'components/molecules/NavbarItem';
+import NavIcon from 'components/atoms/NavIcon';
+import NavBrand from 'components/atoms/NavBrand';
 
 const RollingText = lazy(() => import('components/RollingText'));
 
@@ -17,9 +19,7 @@ export default function Navbar() {
 
   return (
     <nav className="text-brand-black bg-brand-light-gray border-b-brand-black border-r-brand-black border-t-brand-white border-l-brand-white absolute bottom-7.5 left-0 z-50 grid h-[calc(100vh-60px)] min-h-96 min-w-60 grid-cols-[50px_1fr] justify-between border-2">
-      <div className="border-brand-gray bg-brand-dark-gray text-brand-light-gray border-tl-2 flex items-end pr-1 pb-4 text-[40px] leading-8 font-extrabold uppercase [writing-mode:sideways-lr]">
-        <span>Recaps</span>
-      </div>
+      <NavBrand />
       <div className="flex flex-col justify-between">
         <div className="flex flex-col gap-8">
           {/* <img src={logo} alt="Recaps" className="mx-auto size-32" /> */}
@@ -41,7 +41,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="hover:bg-brand-orange font-secondary hover:text-brand-white flex items-center gap-6 gap-x-2.5 px-3 py-2 pt-4 pb-3 text-xl first-letter:underline"
           >
-            <img src={globe} alt="Recaps" className="size-10" />
+            <NavIcon src={globe} />
             <span>Loja online...</span>
           </a>
         </div>
