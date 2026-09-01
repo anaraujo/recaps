@@ -1,15 +1,35 @@
-import { useCallback, useState } from 'react';
+import { lazy, Suspense, useCallback, useState } from 'react';
 import folder from 'assets/icons/orange-folder.png';
 import openFolder from 'assets/icons/orange-open-folder.png';
 import news from 'data/news.json';
 import NewsDialog from './NewsDialog';
+import { prefersReducedMotion } from 'utils/paperCanvas';
+
+const backgroundLoaders = [
+  () => import('components/backgrounds/MetaBalls'),
+  () => import('components/backgrounds/Smoothing'),
+  () => import('components/backgrounds/Voronoi'),
+  () => import('components/backgrounds/RadialOrange'),
+];
 
 export default function News() {
   const [openIndex, setOpenIndex] = useState(null);
   const handleClose = useCallback(() => setOpenIndex(null), []);
 
+  const reducedMotion = prefersReducedMotion();
+  const [Background] = useState(() => {
+    if (reducedMotion) return null;
+    const index = Math.floor(Math.random() * backgroundLoaders.length);
+    return lazy(backgroundLoaders[index]);
+  });
+
   return (
     <main className="min-h-screen pt-24 pr-8 pb-16 pl-69">
+      {Background && (
+        <Suspense fallback={null}>
+          <Background />
+        </Suspense>
+      )}
       <div className="relative grid grid-cols-[repeat(auto-fill,minmax(min(100%,10rem),1fr))] gap-20">
         {news.map(({ name, title, src, instagram, spotify, youtube }, i) => {
           const dialogId = `dialog-${i}`;

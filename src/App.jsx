@@ -1,5 +1,6 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'motion/react';
 import Navbar from 'components/organisms/Navbar';
 import Footer from 'components/Footer';
 
@@ -11,9 +12,12 @@ const About = lazy(() => import('pages/About'));
 const Game = lazy(() => import('pages/Game'));
 
 export default function App() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const toggleNav = () => setIsNavOpen((v) => !v);
+
   return (
-    <div className="bg-brand-black text-brand-gray h-screen overflow-hidden">
-      <Navbar />
+    <div className="bg-brand-black text-brand-gray relative h-screen overflow-hidden">
+      <AnimatePresence>{isNavOpen && <Navbar />}</AnimatePresence>
       <main className="bg-repeating-linear-gradient flex h-full flex-col pb-8">
         <Suspense
           fallback={
@@ -33,7 +37,7 @@ export default function App() {
         </Suspense>
       </main>
 
-      <Footer />
+      <Footer isNavOpen={isNavOpen} onToggleNav={toggleNav} />
     </div>
   );
 }

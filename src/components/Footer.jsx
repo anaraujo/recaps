@@ -1,8 +1,9 @@
 import { Pause, Play, SkipBack, SkipForward } from '@phosphor-icons/react';
 import useYouTubePlayer from 'hooks/useYouTubePlayer';
+import NavbarTrigger from 'components/atoms/NavbarTrigger';
 import { playlistId } from 'data/site.json';
 
-export default function Footer() {
+export default function Footer({ isNavOpen, onToggleNav }) {
   const {
     containerRef,
     isReady,
@@ -26,62 +27,65 @@ export default function Footer() {
         <div ref={containerRef} title="Player de rádio do YouTube" />
       </div>
 
-      <footer className="bg-invert-header-gradient text-brand-black border-brand-orange/40 sticky bottom-0 z-40 flex h-8 items-center gap-3 border border-t border-solid px-4 text-xs">
-        <button
-          type="button"
-          onClick={prev}
-          disabled={!isReady}
-          aria-label="Faixa anterior"
-          className={buttonClass}
-        >
-          <SkipBack size={18} weight="fill" />
-        </button>
-        <button
-          type="button"
-          onClick={toggle}
-          disabled={!isReady}
-          aria-label={isPlaying ? 'Pausar' : 'Tocar'}
-          className={buttonClass}
-        >
-          {isPlaying ? (
-            <Pause size={18} weight="fill" />
-          ) : (
-            <Play size={18} weight="fill" />
-          )}
-        </button>
-        <button
-          type="button"
-          onClick={next}
-          disabled={!isReady}
-          aria-label="Próxima faixa"
-          className={buttonClass}
-        >
-          <SkipForward size={18} weight="fill" />
-        </button>
+      <footer className="bg-brand-light-gray text-brand-black sticky bottom-0 z-40 flex items-center justify-between border border-t border-solid p-px pt-1">
+        <NavbarTrigger isOpen={isNavOpen} onToggle={onToggleNav} />
+        <div className="border-brand-orange/40 bg-invert-header-gradient flex h-full items-center gap-3 px-4 text-xs">
+          <button
+            type="button"
+            onClick={prev}
+            disabled={!isReady}
+            aria-label="Faixa anterior"
+            className={buttonClass}
+          >
+            <SkipBack size={18} weight="fill" />
+          </button>
+          <button
+            type="button"
+            onClick={toggle}
+            disabled={!isReady}
+            aria-label={isPlaying ? 'Pausar' : 'Tocar'}
+            className={buttonClass}
+          >
+            {isPlaying ? (
+              <Pause size={18} weight="fill" />
+            ) : (
+              <Play size={18} weight="fill" />
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={next}
+            disabled={!isReady}
+            aria-label="Próxima faixa"
+            className={buttonClass}
+          >
+            <SkipForward size={18} weight="fill" />
+          </button>
 
-        <div
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-          className="min-w-0 flex-1 truncate"
-        >
-          {error ? (
-            <span className="opacity-50">RÁDIO — {error}</span>
-          ) : currentTrack ? (
-            <>
-              <span className="font-semibold">{currentTrack.title}</span>
-              <span className="opacity-60"> — {currentTrack.author}</span>
-            </>
-          ) : (
-            <span className="opacity-50">
-              RÁDIO — {isReady ? 'sintonizando...' : 'conectando...'}
-            </span>
-          )}
+          <div
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            className="min-w-0 flex-1 truncate"
+          >
+            {error ? (
+              <span className="opacity-50">RÁDIO — {error}</span>
+            ) : currentTrack ? (
+              <>
+                <span className="font-semibold">{currentTrack.title}</span>
+                <span className="opacity-60"> — {currentTrack.author}</span>
+              </>
+            ) : (
+              <span className="opacity-50">
+                RÁDIO — {isReady ? 'sintonizando...' : 'conectando...'}
+              </span>
+            )}
+          </div>
+
+          <span className="text-brand-gray hidden sm:inline">
+            underground, mas mal feito não <strong>© 2026, RECAPS</strong>
+          </span>
         </div>
-
-        <span className="text-brand-gray hidden sm:inline">
-          underground, mas mal feito não <strong>© 2026, RECAPS</strong>
-        </span>
       </footer>
     </>
   );
