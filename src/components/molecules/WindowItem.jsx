@@ -1,13 +1,7 @@
-import {
-  InstagramLogoIcon,
-  SpotifyLogoIcon,
-  YoutubeLogoIcon,
-} from '@phosphor-icons/react';
-
 import planet from 'assets/icons/planet.gif';
 import close from 'assets/icons/close.png';
 
-export default function NewsItem({
+export default function WindowItem({
   dialogId,
   name,
   title,
@@ -18,7 +12,7 @@ export default function NewsItem({
 }) {
   return (
     <div className="">
-      {/* dialog header */}
+      {/* window header */}
       <div className="bg-header-gradient flex items-center justify-between rounded-tl-lg border border-solid border-white p-2">
         <div
           className="flex flex-1 cursor-grab items-center gap-2 active:cursor-grabbing"
@@ -38,7 +32,7 @@ export default function NewsItem({
           <img src={close} alt="Close" className="size-6" />
         </button>
       </div>
-      {/* dialog body */}
+      {/* window body */}
       <div className="bg-brand-gray border border-solid border-white p-4">
         {isOpen && (
           <iframe

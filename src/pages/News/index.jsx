@@ -2,7 +2,7 @@ import { lazy, Suspense, useCallback, useState } from 'react';
 import folder from 'assets/icons/orange-folder.png';
 import openFolder from 'assets/icons/orange-open-folder.png';
 import news from 'data/news.json';
-import NewsDialog from './NewsDialog';
+import WindowDialog from 'components/organisms/WindowDialog';
 import { prefersReducedMotion } from 'utils/paperCanvas';
 
 const backgroundLoaders = [
@@ -56,7 +56,7 @@ export default function News() {
               </button>
 
               {isOpen && (
-                <NewsDialog
+                <WindowDialog
                   dialogId={dialogId}
                   title={title}
                   name={name}
